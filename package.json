@@ -23,6 +23,7 @@
     "typeface-lato": "^1.1.13"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.4",
     "prettier": "2.1.2"
   },
   "repository": {

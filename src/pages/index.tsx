@@ -6,7 +6,7 @@ import Layout from '../components/layout/layout.component'
 const Home: FC<PageProps> = () => {
   return (
     <Layout>
-      <h3>Hello world!</h3>
+
     </Layout>
   )
 }
