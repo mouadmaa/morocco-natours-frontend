@@ -1,4 +1,5 @@
 import React, { FC, Fragment } from 'react'
+import { ThemeProvider } from 'styled-components'
 
 import GlobalStyles from '../../styles/globalStyles'
 import theme from '../../styles/theme'
@@ -9,9 +10,11 @@ const Layout: FC = props => {
 
   return (
     <Fragment>
-      <GlobalStyles theme={theme} />
-      <Navigation />
-      {children}
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Navigation />
+        {children}
+      </ThemeProvider>
     </Fragment>
   )
 }

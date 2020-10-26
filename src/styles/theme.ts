@@ -2,12 +2,12 @@ const theme = {
   fontFamily: "'Lato', 'Segoe UI', Arial, Tahoma, Geneva, Verdana, sans-serif",
   color: {
     primary: '#55c57a',
-    primaryLight: '#7ed56f',
+    primaryLight: '#33e493',
     primaryDark: '#28b485',
     secondaryLight: '#ffb900',
     secondaryDark: '#ff7730',
-    tertiaryLight: '#ffb900',
-    tertiaryDark: '#ff7730',
+    tertiaryLight: '#08AEEA',
+    tertiaryDark: '#0d97c9',
     grayLight1: '#faf9f9',
     grayLight2: '#f4f2f2',
     grayLight3: '#f0eeee',
@@ -15,8 +15,8 @@ const theme = {
     grayDark2: '#777',
     grayDark3: '#333',
   },
-  shadowLight: '0 2rem 5rem rgba(0, 0, 0, 0.06)',
-  shadowDark: '0 2rem 6rem rgba(0, 0, 0, 0.3)',
+  shadowLight: '0 1rem 3rem rgba(0,0,0,0.1)',
+  shadowDark: '0 1rem 2rem rgba(0,0,0,0.2)',
 }
 
 export default theme

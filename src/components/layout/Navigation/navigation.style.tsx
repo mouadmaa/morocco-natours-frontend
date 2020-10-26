@@ -38,24 +38,29 @@ export const NavigationContainer = styled.div`
     right: 3rem;
     border-radius: 50%;
     z-index: 7000;
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    box-shadow: ${({ theme }) => theme.shadowDark};
     text-align: center;
     cursor: pointer;
-    background-color: #08AEEA;
-    background-image: linear-gradient(315deg, #08AEEA 0%, #2AF598 70%);
+    background-color: ${({ theme }) => theme.color.tertiaryLight};
+    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
+    transition-duration: 0.4s;
+
+    :hover {
+      transform: scale(1.03);
+    }
 
     span {
       position: relative;
-      margin-top: 1.9rem;
+      margin-top: 2rem;
       width: 2.4rem;
       height: 2px;
-      background-color: #f7f7f7;
+      background-color: ${({ theme }) => theme.color.grayLight2};
       display: inline-block;
 
       ::before, ::after {
         width: 2.4rem;
         height: 2px;
-        background-color: #f7f7f7;
+        background-color: ${({ theme }) => theme.color.grayLight2};
         display: inline-block;
         content: "";
         position: absolute;
@@ -106,8 +111,8 @@ export const NavigationContainer = styled.div`
     position: fixed;
     top: 3rem;
     right: 3rem;
-    background-color: #08AEEA;
-    background-image: linear-gradient(315deg, #08AEEA 25%, #2AF598 100%);
+    background-color: ${({ theme }) => theme.color.tertiaryLight};
+    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 25%, ${({ theme }) => theme.color.primaryLight} 100%);
 
     z-index: 5000;
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -152,13 +157,13 @@ export const NavigationItemContainer = styled.li`
   a {
     :link, :visited {
       display: inline-block;
-      font-size: 3rem;
+      font-size: 2.6rem;
       font-weight: 400;
       padding: 1rem 2rem;
-      color: #fff;
+      color: ${({ theme }) => theme.color.grayLight1};
       text-decoration: none;
       text-transform: uppercase;
-      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, ${({ theme }) => theme.color.grayLight1} 50%);
       background-size: 220%;
       transition: all .4s;
     }
@@ -170,14 +175,14 @@ export const NavigationItemContainer = styled.li`
 
     :hover, :active {
       background-position: 100%;
-      color: #2AF598;
+      color: ${({ theme }) => theme.color.primaryLight};
       transform: translateX(1rem);
     }
   }
 `
 
 const loginAndSignupStyles = css`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.color.grayLight1};
   height: 3.6rem;
   width: auto;
   min-width: 8rem;
@@ -186,11 +191,16 @@ const loginAndSignupStyles = css`
   right: 8rem;
   border-radius: 2rem;
   z-index: 2000;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => theme.shadowDark};
   text-align: center;
   cursor: pointer;
-  background-color: #08AEEA;
-  background-image: linear-gradient(315deg, #08AEEA 0%, #2AF598 70%);
+  background-color: ${({ theme }) => theme.color.tertiaryLight};
+  background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
+  transition-duration: 0.4s;
+
+  :hover {
+    transform: scale(1.03);
+  }
 
   img {
     height: 100%;
@@ -199,7 +209,7 @@ const loginAndSignupStyles = css`
 
   span {
     display: inline-block;
-    color: #f7f7f7;
+    color: ${({ theme }) => theme.color.grayLight2};
     text-transform: uppercase;
     font-weight: 400;
     font-size: 1.5rem;
@@ -210,7 +220,7 @@ const loginAndSignupStyles = css`
 
   h3 {
     display: inline-block;
-    color: #f7f7f7;
+    color: ${({ theme }) => theme.color.grayLight2};
     text-transform: uppercase;
     font-weight: 400;
     font-size: 1.5rem;
@@ -249,7 +259,7 @@ export const NavigationSignupContainer = styled(Link)`
 `
 
 export const NavigationTitleContainer = styled(Link)`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.color.grayLight1};
   height: 3.6rem;
   width: auto;
   position: fixed;
@@ -258,15 +268,20 @@ export const NavigationTitleContainer = styled(Link)`
   line-height: 0.9;
   border-radius: 5rem;
   z-index: 2000;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => theme.shadowDark};
   text-align: center;
   cursor: pointer;
-  background-color: #08AEEA;
-  background-image: linear-gradient(315deg, #08AEEA 0%, #2AF598 70%);
+  background-color: ${({ theme }) => theme.color.tertiaryLight};
+  background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
+  transition-duration: 0.4s;
+
+  :hover {
+    transform: scale(1.03);
+  }
 
   h1 {
     display: inline-block;
-    color: #f7f7f7;
+    color: ${({ theme }) => theme.color.grayLight2};
     text-transform: uppercase;
     font-weight: 500;
     font-size: 1.5rem;
