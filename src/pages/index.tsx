@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
 import { PageProps } from 'gatsby'
 
-import Layout from '../components/layout/layout.component'
+import Layout from '../components/Layout/Layout.component'
+import HomeHero from '../components/Home/HomeHero/HomeHero.component'
 
 const Home: FC<PageProps> = () => {
   return (
     <Layout>
-
+      <HomeHero />
     </Layout>
   )
 }

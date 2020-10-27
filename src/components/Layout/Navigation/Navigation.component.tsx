@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import {
   NavigationContainer, NavigationContentContainer, NavigationListContainer,
   NavigationItemContainer, NavigationLoginContainer, NavigationTitleContainer, NavigationSignupContainer
-} from './navigation.style'
+} from './Navigation.styles'
 
 const Navigation = () => {
   const [checked, setChecked] = useState(false)

@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 
 import GlobalStyles from '../../styles/globalStyles'
 import theme from '../../styles/theme'
-import Navigation from './Navigation/navigation.component'
+import Navigation from './Navigation/Navigation.component'
 
 const Layout: FC = props => {
   const { children } = props
