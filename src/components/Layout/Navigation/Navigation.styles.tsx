@@ -6,7 +6,7 @@ export const NavigationContainer = styled.div`
     display: none;
 
     :checked ~ div {
-      transform: scale(80);
+      transform: scale(100);
     }
 
     :checked ~ nav {
@@ -38,7 +38,7 @@ export const NavigationContainer = styled.div`
     right: 3rem;
     border-radius: 50%;
     z-index: 7000;
-    box-shadow: ${({ theme }) => theme.shadowDark};
+    box-shadow: ${({ theme }) => theme.shadowLight};
     text-align: center;
     cursor: pointer;
     background-color: ${({ theme }) => theme.color.tertiaryLight};
@@ -47,6 +47,7 @@ export const NavigationContainer = styled.div`
 
     :hover {
       transform: scale(1.03);
+      box-shadow: ${({ theme }) => theme.shadowDark};
     }
 
     span {
@@ -73,7 +74,7 @@ export const NavigationContainer = styled.div`
       }
 
       ::after {
-        top: 6.5px;
+        top: 6px;
       }
     }
 
@@ -112,8 +113,7 @@ export const NavigationContainer = styled.div`
     top: 3rem;
     right: 3rem;
     background-color: ${({ theme }) => theme.color.tertiaryLight};
-    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 25%, ${({ theme }) => theme.color.primaryLight} 100%);
-
+    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 10%, ${({ theme }) => theme.color.primaryLight} 100%);
     z-index: 5000;
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 
@@ -157,7 +157,7 @@ export const NavigationItemContainer = styled.li`
   a {
     :link, :visited {
       display: inline-block;
-      font-size: 2.6rem;
+      font-size: 3rem;
       font-weight: 400;
       padding: 1rem 2rem;
       color: ${({ theme }) => theme.color.grayLight1};
@@ -191,7 +191,7 @@ const loginAndSignupStyles = css`
   right: 8rem;
   border-radius: 2rem;
   z-index: 2000;
-  box-shadow: ${({ theme }) => theme.shadowDark};
+  box-shadow: ${({ theme }) => theme.shadowLight};
   text-align: center;
   cursor: pointer;
   background-color: ${({ theme }) => theme.color.tertiaryLight};
@@ -200,6 +200,7 @@ const loginAndSignupStyles = css`
 
   :hover {
     transform: scale(1.03);
+    box-shadow: ${({ theme }) => theme.shadowDark};
   }
 
   img {
@@ -226,7 +227,7 @@ const loginAndSignupStyles = css`
     font-size: 1.5rem;
     letter-spacing: .08rem;
     padding: 0 1.5rem;
-    line-height: 0.8;
+    line-height: 1;
     transform: translateY(1.2rem);
   }
 
@@ -268,7 +269,7 @@ export const NavigationTitleContainer = styled(Link)`
   line-height: 0.9;
   border-radius: 5rem;
   z-index: 2000;
-  box-shadow: ${({ theme }) => theme.shadowDark};
+  box-shadow: ${({ theme }) => theme.shadowLight};
   text-align: center;
   cursor: pointer;
   background-color: ${({ theme }) => theme.color.tertiaryLight};
@@ -277,6 +278,7 @@ export const NavigationTitleContainer = styled(Link)`
 
   :hover {
     transform: scale(1.03);
+    box-shadow: ${({ theme }) => theme.shadowDark};
   }
 
   h1 {

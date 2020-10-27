@@ -1,18 +1,45 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 const headingStyles = css`
-  color: #fff;
+  color: ${({ theme }) => theme.color.grayLight1};
   text-transform: uppercase;
   backface-visibility: hidden;
   font-weight: 300;
 
-  & span {
+  span {
     padding: 1rem 1.5rem;
     line-height: 1;
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    background-image: -webkit-gradient(315deg, #08AEEA 0%, #2AF598 70%);
-    background-image: linear-gradient(315deg, #08AEEA 0%, #2AF598 70%);
+    background-color: ${({ theme }) => theme.color.tertiaryLight};
+    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
+  }
+`
+
+const moveInLeft = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+`
+
+const moveInRight = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
 `
 
@@ -28,6 +55,7 @@ export const HeadingPrimary = styled.h1`
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.6rem;
+    animation: ${moveInLeft} 1s ease-out;
 
     @media only screen and (max-width: 37.5em) {
       font-size: 4rem;
@@ -40,6 +68,7 @@ export const HeadingPrimary = styled.h1`
     font-weight: 700;
     letter-spacing: 1.75rem;
     padding-right: 1.6rem;
+    animation: ${moveInRight} 1s ease-out;
 
     @media only screen and (max-width: 37.5em) {
       font-size: 1.8rem;
@@ -53,9 +82,8 @@ export const HeadingSecondary = styled.h2`
   font-size: 2.25rem;
   text-transform: uppercase;
   font-weight: 700;
-  background-image: -webkit-gradient(315deg, #08AEEA 0%, #2AF598 70%);
-  background-image: linear-gradient(315deg, #08AEEA 0%, #2AF598 70%);
-  -webkit-background-clip: text;
+  background-color: ${({ theme }) => theme.color.tertiaryLight};
+  background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
   background-clip: text;
   color: transparent;
   letter-spacing: 0.1rem;
