@@ -285,7 +285,7 @@ export const NavigationTitleContainer = styled(Link)`
     display: inline-block;
     color: ${({ theme }) => theme.color.grayLight2};
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.5rem;
     letter-spacing: 0.1rem;
     padding: 0 2rem;

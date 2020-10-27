@@ -10,7 +10,7 @@ const HomeHero: FC = () => {
     {
       file(relativePath: {eq: "hero.jpg"}) {
         childImageSharp {
-          fluid(quality: 10, maxWidth: 1200) {
+          fluid {
             ...GatsbyImageSharpFluid_withWebp
           }
         }

@@ -51,6 +51,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     line-height: 1.6;
     overflow-x: hidden;
+    min-height: 1000vh;
   }
 `
 

@@ -4,7 +4,6 @@ const headingStyles = css`
   color: ${({ theme }) => theme.color.grayLight1};
   text-transform: uppercase;
   backface-visibility: hidden;
-  font-weight: 300;
 
   span {
     padding: 1rem 1.5rem;
@@ -65,7 +64,7 @@ export const HeadingPrimary = styled.h1`
 
   div:last-child {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 1.75rem;
     padding-right: 1.6rem;
     animation: ${moveInRight} 1s ease-out;
@@ -81,9 +80,10 @@ export const HeadingPrimary = styled.h1`
 export const HeadingSecondary = styled.h2`
   font-size: 2.25rem;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
   background-color: ${({ theme }) => theme.color.tertiaryLight};
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   letter-spacing: 0.1rem;
@@ -92,7 +92,8 @@ export const HeadingSecondary = styled.h2`
 `
 
 export const HeadingTertiary = styled.h3`
-  font-size: 2.75rem;
+  font-size: 1.4rem;
+  font-weight: 400;
   text-align: right;
   position: absolute;
   bottom: 1rem;
