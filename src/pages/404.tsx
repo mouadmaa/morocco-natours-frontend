@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { PageProps } from 'gatsby'
 
-import Layout from '../components/Layout/Layout.component'
+import Layout from '../Layout'
 
 const NotFound: FC<PageProps> = () => {
   return (

@@ -8,6 +8,7 @@ const path = require(`path`)
 module.exports = {
   /* Your site config here */
   plugins: [
+    `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

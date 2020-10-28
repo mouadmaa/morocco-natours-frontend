@@ -9,7 +9,7 @@ import {
 import Heading from '../../UI/Heading/Heading.component'
 import Button from '../../UI/Button/Button.component'
 import { Tour } from '../../../models/tourModel'
-import { optimizeCloudinaryImage } from '../../../../utils/optimizeCloudinaryImage'
+import { optimizeCloudinaryImage } from '../../../utils/optimizeCloudinaryImage'
 
 const HomeTours: FC = () => {
   const data = useStaticQuery(query) as ToursQuery

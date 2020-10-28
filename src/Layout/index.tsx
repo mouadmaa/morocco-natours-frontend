@@ -1,8 +1,8 @@
 import React, { FC, Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import GlobalStyles from '../../styles/globalStyles'
-import theme from '../../styles/theme'
+import GlobalStyles from '../styles/globalStyles'
+import theme from '../styles/theme'
 import Navigation from './Navigation/Navigation.component'
 
 const Layout: FC = props => {
