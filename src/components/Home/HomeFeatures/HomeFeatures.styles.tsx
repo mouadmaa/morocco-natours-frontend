@@ -85,7 +85,7 @@ export const FeatureBoxContainer = styled.div`
   h3 {
     margin: 0 1rem;
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 600;
     color: ${({ theme }) => theme.color.grayDark2};
     text-transform: uppercase;
   }

@@ -19,7 +19,7 @@ const buttonStyles = css`
   :link,
   :visited {
     font-size: 1.6rem;
-    padding: 1.4rem 3rem;
+    padding: 1.2rem 3rem;
     border-radius: 10rem;
     text-transform: uppercase;
     display: inline-block;

@@ -6,14 +6,15 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "develop": "yarn clean && gatsby develop",
+    "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.85",
     "gatsby-background-image": "^1.1.2",
