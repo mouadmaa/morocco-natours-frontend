@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 export const AboutContainer = styled.section`
   background-color: ${({ theme }) => theme.color.grayLight1};
-  padding: 15rem 5vw;
+  padding: 15rem 5vw 20rem;
   margin-top: -10vh;
+
+  @media only screen and (max-width: 37.25em) {
+    padding: 20rem 5vw 0;
+  }
 `
 
 export const AboutTitleContainer = styled.div`
@@ -11,10 +15,15 @@ export const AboutTitleContainer = styled.div`
 
   h2 {
     font-size: 3rem;
-    margin: 3rem 4rem;
+    margin: 3rem 4rem 5rem;
 
     @media only screen and (max-width: 75em) {
       margin-bottom: 0;
+    }
+
+    @media only screen and (max-width: 37.25em) {
+      font-size: 2.5rem;
+      margin: 1rem 0;
     }
   }
 `
@@ -33,6 +42,14 @@ export const AboutContentContainer = styled.div`
 export const AboutTextContainer = styled.div`
   padding: 2rem 4rem;
 
+  @media only screen and (max-width: 37.25em) {
+    padding: 2rem 0;
+  }
+
+  @media only screen and (max-width: 21.25em) {
+    padding: 0;
+  }
+
   h3 {
     margin: 3rem 1rem .5rem;
     font-size: 1.6rem;
@@ -42,11 +59,12 @@ export const AboutTextContainer = styled.div`
 
     @media only screen and (max-width: 37.25em) {
       margin-top: 2rem;
+      text-align: center;
     }
   }
 
   p {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 400;
 
     @media only screen and (max-width: 37.25em) {
@@ -110,7 +128,7 @@ export const AboutImagesContainer = styled.div`
     }
   }
 
-  :hover img:not(:hover) {
+  :hover div:not(:hover) {
     transform: scale(0.95);
   }
 `

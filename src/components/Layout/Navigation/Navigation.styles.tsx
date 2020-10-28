@@ -240,6 +240,11 @@ const loginAndSignupStyles = css`
     top: 2rem;
     right: 6.5rem;
   }
+
+  @media only screen and (max-width: 24em) {
+    right: auto;
+    left: 2rem;
+  }
 `
 
 export const NavigationLoginContainer = styled(Link)`
@@ -254,8 +259,9 @@ export const NavigationSignupContainer = styled(Link)`
     right: 16rem;
   }
 
-  @media only screen and (max-width: 37.5em) {
-    right: 15rem;
+  @media only screen and (max-width: 24em) {
+    right: auto;
+    left: 12rem;
   }
 `
 
@@ -302,7 +308,7 @@ export const NavigationTitleContainer = styled(Link)`
     left: 2rem;
   }
 
-  @media only screen and (max-width: 21em) {
+  @media only screen and (max-width: 24em) {
     display: none;
   }
 `

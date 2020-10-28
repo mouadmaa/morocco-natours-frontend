@@ -17,6 +17,13 @@ module.exports = {
         name: `images`,
         path: path.join(__dirname, `static`, `images`),
       },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `svgs`,
+        path: path.join(__dirname, `static`, `svgs`),
+      },
     }
   ],
 }

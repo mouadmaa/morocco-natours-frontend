@@ -33,9 +33,9 @@ const HomeAbout: FC = () => {
           </p>
         </AboutTextContainer>
         <AboutImagesContainer>
-          <Image fluid={data.natour3.childImageSharp.fluid} />
-          <Image fluid={data.natour1.childImageSharp.fluid} />
-          <Image fluid={data.natour2.childImageSharp.fluid} />
+          <Image fluid={data.nature3.childImageSharp.fluid} alt='nature 3' />
+          <Image fluid={data.nature1.childImageSharp.fluid} alt='nature 1' />
+          <Image fluid={data.nature2.childImageSharp.fluid} alt='nature 2' />
         </AboutImagesContainer>
       </AboutContentContainer>
     </AboutContainer>
@@ -46,21 +46,21 @@ export default HomeAbout
 
 const query = graphql`
   {
-    natour1: file(relativePath: {eq: "natour-1.jpg"}) {
+    nature1: file(relativePath: {eq: "nature-1.jpg"}) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    natour2: file(relativePath: {eq: "natour-2.jpg"}) {
+    nature2: file(relativePath: {eq: "nature-2.jpg"}) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    natour3: file(relativePath: {eq: "natour-3.jpg"}) {
+    nature3: file(relativePath: {eq: "nature-3.jpg"}) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

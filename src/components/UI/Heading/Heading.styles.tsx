@@ -80,7 +80,7 @@ export const HeadingPrimary = styled.h1`
 export const HeadingSecondary = styled.h2`
   font-size: 2.25rem;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 400;
   background-color: ${({ theme }) => theme.color.tertiaryLight};
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
   -webkit-background-clip: text;

@@ -6,17 +6,7 @@ import Heading from '../../UI/Heading/Heading.component'
 import Button from '../../UI/Button/Button.component'
 
 const HomeHero: FC = () => {
-  const data = useStaticQuery(graphql`
-    {
-      file(relativePath: {eq: "hero.jpg"}) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
+  const data = useStaticQuery(query)
 
   const HeroImage = [
     `linear-gradient(315deg, rgba(8, 174, 234, 0.8), rgba(42, 245, 152, 0.8))`,
@@ -46,3 +36,15 @@ const HomeHero: FC = () => {
 }
 
 export default HomeHero
+
+const query = graphql`
+  {
+    file(relativePath: {eq: "hero.jpg"}) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
