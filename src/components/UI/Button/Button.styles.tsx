@@ -16,25 +16,22 @@ const moveInBottom = keyframes`
 `
 
 const buttonStyles = css`
-  :link,
-  :visited {
-    font-size: 1.6rem;
-    padding: 1.2rem 3rem;
-    border-radius: 10rem;
-    text-transform: uppercase;
-    display: inline-block;
-    text-decoration: none;
-    position: relative;
-    transition: all 0.4s;
-    font-weight: 400;
-    backface-visibility: hidden;
-    box-shadow: ${({ theme }) => theme.shadowLight};
-    border: none;
-    cursor: pointer;
-  }
+  font-size: 1.6rem;
+  padding: 1.2rem 3rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.4s;
+  font-weight: 400;
+  backface-visibility: hidden;
+  box-shadow: ${({ theme }) => theme.shadowLight};
+  border: none;
+  cursor: pointer;
 
   :hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadowDark};
   }
 
@@ -71,7 +68,7 @@ const buttonWhiteStyles = css`
   }
 
   :hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadowDark};;
   }
 
@@ -92,7 +89,7 @@ const buttonGreenStyles = css`
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
   background-position: 100% 0;
   background-size: 200% 200%;
-  transition-delay: 0.5s;
+  transition: 0.5s;
 
   ::after {
     background-color: ${({ theme }) => theme.color.primary};
@@ -123,27 +120,24 @@ export const ButtonLinkContainer = styled(Link)`
 `
 
 export const ButtonSmallContainer = styled.button`
-  :link,
-  :visited {
-    background-color: ${({ theme }) => theme.color.tertiaryLight};
-    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
-    background-position: 100% 0;
-    background-size: 200% 200%;
-    color: ${({ theme }) => theme.color.grayLight1};
-    font-size: 1.4rem;
-    padding: 1.25rem 3rem;
-    border-radius: 10rem;
-    text-transform: uppercase;
-    position: relative;
-    transition: all 0.4s;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 400;
-    border: none;
-  }
+  background-color: ${({ theme }) => theme.color.tertiaryLight};
+  background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  color: ${({ theme }) => theme.color.grayLight1};
+  font-size: 1.4rem;
+  padding: 1rem 3rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 400;
+  border: none;
 
   :hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadowDark};
     background-position: 0 0;
   }
@@ -160,16 +154,13 @@ export const ButtonSmallContainer = styled.button`
 `
 
 export const LinkTextContainer = styled(Link)`
-  :link,
-  :visited {
-    font-size: 1.6rem;
-    color: ${({ theme }) => theme.color.primaryLight};
-    display: inline-block;
-    text-decoration: none;
-    border-bottom: 1px solid ${({ theme }) => theme.color.primaryLight};
-    padding: 3px 6px;
-    transition: all 0.4s;
-  }
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.color.primaryLight};
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid ${({ theme }) => theme.color.primaryLight};
+  padding: 3px 6px;
+  transition: all 0.4s;
 
   :hover {
     color: ${({ theme }) => theme.color.grayLight1};
