@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import Image from 'gatsby-image'
 
 import {
@@ -6,7 +7,6 @@ import {
   AboutTextContainer, AboutImagesContainer
 } from './HomeAbout.styles'
 import Heading from '../../UI/Heading/Heading.component'
-import { graphql, useStaticQuery } from 'gatsby'
 
 const HomeAbout: FC = () => {
   const data = useStaticQuery(query)

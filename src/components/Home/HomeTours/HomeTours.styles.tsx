@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 export const ToursCardsContainer = styled.section`
   background-color: ${({ theme }) => theme.color.grayLight1};
-  padding: 15rem 5vw;
+  padding: 15rem 5vw 12rem;
   margin-top: -6rem;
 
   @media only screen and (max-width: 56.25em) {

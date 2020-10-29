@@ -6,6 +6,7 @@ import HomeHero from '../components/Home/HomeHero/HomeHero.component'
 import HomeAbout from '../components/Home/HomeAbout/HomeAbout.component'
 import HomeFeatures from '../components/Home/HomeFeatures/HomeFeatures.component'
 import HomeTours from '../components/Home/HomeTours/HomeTours.component'
+import HomeStories from '../components/Home/HomeStories/HomeStories.component'
 
 const Home: FC<PageProps> = () => {
   return (
@@ -14,6 +15,7 @@ const Home: FC<PageProps> = () => {
       <HomeAbout />
       <HomeFeatures />
       <HomeTours />
+      <HomeStories />
     </Layout>
   )
 }
