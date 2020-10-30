@@ -5,11 +5,15 @@ export const SectionDescriptionContainer = styled.section`
   margin-top: calc(0px - 9vw);
   display: flex;
 
-  & > * {
+  > * {
     padding: 0 8vw;
     padding-top: 14vw;
     padding-bottom: calc(1vw + 9vw);
     flex: 0 0 50%;
+  }
+
+  h2 div {
+    display: none;
   }
 
   @media only screen and (max-width: 37.5em) {
