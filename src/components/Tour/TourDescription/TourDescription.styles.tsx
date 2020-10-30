@@ -49,8 +49,8 @@ export const OverviewBoxDetailsContainer = styled.div`
 
   & > img {
     margin-right: 1.25rem;
-    height: 2.25rem;
-    width: 2.25rem;
+    height: 3.5rem;
+    width: 3.5rem;
   }
 
   &:not(:last-child) {

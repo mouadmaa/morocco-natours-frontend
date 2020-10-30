@@ -5,6 +5,7 @@ import Layout from '../Layout'
 import TourHeader from '../components/Tour/TourHeader/TourHeader.component'
 import TourDescription from '../components/Tour/TourDescription/TourDescription.component'
 import TourPictures from '../components/Tour/TourPictures/TourPictures.component'
+import TourMap from '../components/Tour/TourMap/TourMap.component'
 import { Tour as TourType } from '../models/tourModel'
 
 interface TourProps extends PageProps {
@@ -35,6 +36,9 @@ const Tour: FC<TourProps> = props => {
       <TourPictures
         name={tour.name}
         images={tour.images}
+      />
+      <TourMap
+        locations={tour.locations}
       />
     </Layout>
   )

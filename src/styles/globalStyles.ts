@@ -1,7 +1,8 @@
-
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
+  @import 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css';
+
   *,
   *::before,
   *::after {

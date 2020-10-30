@@ -29,4 +29,5 @@ export interface Location {
   coordinates: [number, number]
   address: string
   description: string
+  day: number
 }
