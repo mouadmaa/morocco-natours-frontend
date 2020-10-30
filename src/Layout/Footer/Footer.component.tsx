@@ -25,7 +25,8 @@ const Footer: FC = () => {
         ))}
       </FooterNavContainer>
       <FooterCopyright>
-        All Rights Reserved, &copy; By{` `}
+        All Rights Reserved &copy;
+        {new Date().getFullYear()}, By{` `}
         <Link to='/'>Mouad Maaroufi</Link>
       </FooterCopyright>
     </FooterContainer>

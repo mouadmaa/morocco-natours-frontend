@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { graphql, PageProps } from 'gatsby'
 
 import Layout from '../Layout'
-import HomeHeader from '../components/Home/HomeHero/HomeHeader.component'
+import HomeHeader from '../components/Home/HomeHeader/HomeHeader.component'
 import HomeAbout from '../components/Home/HomeAbout/HomeAbout.component'
 import HomeFeatures from '../components/Home/HomeFeatures/HomeFeatures.component'
 import HomeTours from '../components/Home/HomeTours/HomeTours.component'
