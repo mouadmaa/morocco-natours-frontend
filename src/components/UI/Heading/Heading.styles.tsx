@@ -90,6 +90,15 @@ export const HeadingSecondary = styled.h2`
   letter-spacing: 0.1rem;
   line-height: 1.3;
   display: inline-block;
+
+  > div {
+    margin-top: 0.2rem;
+    height: 0.25rem;
+    width: 105%;
+    transform: translateX(-2%);
+    background-color: ${({ theme }) => theme.color.tertiaryLight};
+    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
+  }
 `
 
 export const HeadingTertiary = styled.h3`

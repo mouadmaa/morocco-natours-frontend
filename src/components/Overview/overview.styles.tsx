@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const OverviewContent = styled.div`
-  padding: 6rem 5vw 10rem;
+  padding: 8rem 5vw 10rem;
   max-width: 150rem;
   min-height: 80vh;
   margin: 0 auto;

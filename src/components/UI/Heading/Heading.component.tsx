@@ -16,7 +16,12 @@ const Heading: React.FC<HeadingProps> = props => {
       {type === 'Primary' ? (
         <HeadingPrimary>{children}</HeadingPrimary>
       ) : type === 'Secondary' ? (
-        <HeadingSecondary>{children}</HeadingSecondary>
+          <Fragment>
+            <HeadingSecondary>
+              {children}
+              <div />
+            </HeadingSecondary>
+          </Fragment>
       ) : type === 'Tertiary' && (
         <HeadingTertiary>{children}</HeadingTertiary>
       )}
