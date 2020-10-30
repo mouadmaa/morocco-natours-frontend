@@ -26,13 +26,13 @@ const Navigation = () => {
       </NavigationTitleContainer>
 
       <NavigationLoginContainer
-        to='/'
+        to='/login'
       >
         <h3>Login</h3>
       </NavigationLoginContainer>
 
       <NavigationSignupContainer
-        to='/'
+        to='/signup'
       >
         <h3>Signup</h3>
       </NavigationSignupContainer>
