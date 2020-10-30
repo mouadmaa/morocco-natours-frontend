@@ -3,6 +3,7 @@ import { PageProps } from 'gatsby'
 
 import Layout from '../Layout'
 import { Tour as TourType } from '../models/tourModel'
+import TourHeader from '../components/Tour/TourHeader/TourHeader.component'
 
 interface TourProps extends PageProps {
   pageContext: {
@@ -15,7 +16,12 @@ const Tour: FC<TourProps> = props => {
 
   return (
     <Layout>
-      {tour.name}
+      <TourHeader
+        name={tour.name}
+        imageCover={tour.imageCover}
+        duration={tour.duration}
+        description={tour.startLocation.description}
+      />
     </Layout>
   )
 }
