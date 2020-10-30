@@ -7,6 +7,7 @@ import TourDescription from '../components/Tour/TourDescription/TourDescription.
 import TourPictures from '../components/Tour/TourPictures/TourPictures.component'
 import TourMap from '../components/Tour/TourMap/TourMap.component'
 import { Tour as TourType } from '../models/tourModel'
+import TourReviews from '../components/Tour/TourReviews/TourReviews.component'
 
 interface TourProps extends PageProps {
   pageContext: {
@@ -39,6 +40,9 @@ const Tour: FC<TourProps> = props => {
       />
       <TourMap
         locations={tour.locations}
+      />
+      <TourReviews
+        reviews={tour.reviews}
       />
     </Layout>
   )
