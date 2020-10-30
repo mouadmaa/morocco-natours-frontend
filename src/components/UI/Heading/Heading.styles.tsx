@@ -84,6 +84,7 @@ export const HeadingSecondary = styled.h2`
   background-color: ${({ theme }) => theme.color.tertiaryLight};
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
   -webkit-background-clip: text;
+  text-shadow: ${({ theme }) => theme.shadowDark};
   background-clip: text;
   color: transparent;
   letter-spacing: 0.1rem;

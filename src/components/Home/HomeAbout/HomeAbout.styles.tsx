@@ -131,4 +131,8 @@ export const AboutImagesContainer = styled.div`
   :hover div:not(:hover) {
     transform: scale(0.95);
   }
+
+  @media only screen and (max-width: 75em) {
+    min-height: 30rem;
+  }
 `

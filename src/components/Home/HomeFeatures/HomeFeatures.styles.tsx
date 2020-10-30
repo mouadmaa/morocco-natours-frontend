@@ -3,6 +3,7 @@ import BackgroundImage from 'gatsby-background-image'
 
 export const FeaturesContainer = styled(BackgroundImage)`
   padding: 20rem 5vw;
+  margin-top: -5rem;
   background-color: rgba(8, 174, 234, 0.8);
   background-size: cover;
   transform: skewY(-5deg);
