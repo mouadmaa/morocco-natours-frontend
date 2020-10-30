@@ -1,3 +1,6 @@
+import { Review } from './reviewModel';
+import { User } from './userModel'
+
 export interface Tour {
   id: string
   name: string
@@ -9,14 +12,15 @@ export interface Tour {
   price: number
   priceDiscount?: number
   summary: string
-  description?: string
+  description: string
   imageCover: string
   slug: string
   images: string[]
   startDates: Date[]
   startLocation: Location
   locations: Location[]
-  guides: string[]
+  guides: User[]
+  reviews: Review[]
 }
 
 export interface Location {

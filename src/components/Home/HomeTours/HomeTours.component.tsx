@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
 
 import {
   ToursCardsContainer, ToursCardsTitleContainer, ToursCardsContentContainer,
@@ -11,9 +10,12 @@ import Button from '../../UI/Button/Button.component'
 import { Tour } from '../../../models/tourModel'
 import { optimizeCloudinaryImage } from '../../../utils/optimizeCloudinaryImage'
 
-const HomeTours: FC = () => {
-  const data = useStaticQuery(query) as ToursQuery
-  const tours = data.allTours.edges
+interface HomeToursProps {
+  tours: Tour[]
+}
+
+const HomeTours: FC<HomeToursProps> = props => {
+  const { tours } = props
 
   return (
     <ToursCardsContainer>
@@ -24,7 +26,7 @@ const HomeTours: FC = () => {
       </ToursCardsTitleContainer>
 
       <ToursCardsContentContainer>
-        {tours.map(({ node: tour }) => (
+        {tours.map(tour => (
           <TourCardContainer key={tour.id}>
             <CardSideFrontContainer
               image={optimizeCloudinaryImage(tour.imageCover, 'h_240,q_50')}
@@ -74,31 +76,3 @@ const HomeTours: FC = () => {
 }
 
 export default HomeTours
-
-interface ToursQuery {
-  allTours: {
-    edges: [{
-      node: Tour
-    }]
-  }
-}
-
-const query = graphql`
-  query {
-    allTours(limit: 3) {
-      edges {
-        node {
-          id
-          name
-          price
-          slug
-          imageCover
-          duration
-          maxGroupSize
-          guides
-          difficulty
-        }
-      }
-    }
-  }
-`

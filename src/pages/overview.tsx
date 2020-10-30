@@ -13,8 +13,7 @@ interface OverviewProps extends PageProps {
 
 const Overview: FC<OverviewProps> = props => {
   const { data } = props
-
-  const tours = data.allTours.edges
+  const tours = data.allTours.nodes
 
   return (
     <Layout>
@@ -24,7 +23,7 @@ const Overview: FC<OverviewProps> = props => {
         </Heading>
       </OverviewHeading>
       <OverviewContent>
-        {tours.map(({ node: tour }) => (
+        {tours.map(tour => (
           <TourCard
             key={tour.id}
             tour={tour}
@@ -39,36 +38,32 @@ export default Overview
 
 interface ToursQuery {
   allTours: {
-    edges: [{
-      node: Tour
-    }]
+    nodes: Tour[]
   }
 }
 
 export const query = graphql`
   query {
     allTours {
-      edges {
-        node {
-          id
-          name
-          price
-          slug
-          imageCover
-          duration
-          maxGroupSize
-          difficulty
+      nodes {
+        id
+        name
+        price
+        slug
+        imageCover
+        duration
+        maxGroupSize
+        difficulty
+        description
+        ratingsAverage
+        ratingsQuantity
+        startDates
+        summary
+        startLocation {
           description
-          ratingsAverage
-          ratingsQuantity
-          locations {
-            _id
-          }
-          startLocation {
-            description
-          }
-          startDates
-          summary
+        }
+        locations {
+          description
         }
       }
     }
