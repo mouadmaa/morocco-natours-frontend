@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { HeaderContainer, HeaderTextContainer } from './HomeHero.styles'
+import { HeaderContainer, HeaderTextContainer } from './HomeHeader.styles'
 import Heading from '../../UI/Heading/Heading.component'
 import Button from '../../UI/Button/Button.component'
 
-const HomeHero: FC = () => {
+const HomeHeader: FC = () => {
   const data = useStaticQuery(query)
 
   const HeroImage = [
@@ -35,7 +35,7 @@ const HomeHero: FC = () => {
   )
 }
 
-export default HomeHero
+export default HomeHeader
 
 const query = graphql`
   {
