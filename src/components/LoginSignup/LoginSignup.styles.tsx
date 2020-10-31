@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
+export const LoginSignupContainer = styled.div`
   background-color: #f7f7f7;
   padding: 0 5vw;
   height: 90vh;
@@ -10,7 +10,7 @@ export const LoginContainer = styled.div`
   justify-content: center;
 `
 
-export const LoginFormContainer = styled.div`
+export const LoginSignupFormContainer = styled.div`
   margin: 0 auto;
   width: 55rem;
   min-width: 30rem;
@@ -20,6 +20,7 @@ export const LoginFormContainer = styled.div`
   border-radius: 5px;
 
   > h2 {
+    width: 100%;
     text-align: center;
     margin-bottom: 3.5rem;
 
@@ -29,7 +30,7 @@ export const LoginFormContainer = styled.div`
   }
 
   @media only screen and (max-width: 56.25em) {
-    padding: 3rem;
+    padding: 2rem;
   }
 `
 

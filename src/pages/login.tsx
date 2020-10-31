@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
+import { useFetch } from 'use-http'
 
 import {
-  LoginContainer, LoginFormContainer, FormGroupContainer, FormGroupLink
-} from '../components/LoginAndSignup/LoginAndSignup.styles'
+  LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
+} from '../components/LoginSignup/LoginSignup.styles'
 import Layout from '../Layout'
 import Button from '../components/UI/Button/Button.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import Input from '../components/UI/Input/Input.component'
+import { useAuthContext } from '../hooks/useAuthHook'
 
 interface LoginInputs {
   email: string
@@ -16,73 +18,80 @@ interface LoginInputs {
 
 const Login: FC = () => {
   const { register, handleSubmit, errors } = useForm<LoginInputs>()
-  const [loading, setLoading] = useState(false)
+  const { post, loading } = useFetch(process.env.GATSBY_BACKEND_API_URL)
 
-  const onSubmit = (inputs: LoginInputs) => {
-    setLoading(true)
-    console.log(inputs)
-    setLoading(false)
+  const { user, login } = useAuthContext()
+  console.log(user)
+
+  const onSubmit = async (inputs: LoginInputs) => {
+    const data = await post('/users/login', inputs)
+    if (data.user && data.accessToken) {
+      console.log(data.user, data.accessToken)
+      login(data.user, data.accessToken)
+    } else {
+      console.log(data.message)
+    }
   }
 
   return (
     <Layout>
-      <LoginContainer>
-        <LoginFormContainer>
-          <Heading type='Secondary'>
-            Log into your account
-          </Heading>
+      <LoginSignupContainer>
+        <LoginSignupFormContainer>
+        <Heading type='Secondary'>
+          Log into your account
+        </Heading>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <FormGroupContainer>
-              <Input
-                name='email'
-                label='Email'
-                placeholder='you@exemple.com'
-                error={errors.email}
-                register={register({
-                  required: true,
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Please enter a valid email',
-                  },
-                })}
-              />
-            </FormGroupContainer>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormGroupContainer>
+            <Input
+              name='email'
+              label='Email'
+              placeholder='you@exemple.com'
+              error={errors.email}
+              register={register({
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Please enter a valid email',
+                },
+              })}
+            />
+          </FormGroupContainer>
 
-            <FormGroupContainer>
-              <Input
-                type='password'
-                name='password'
-                label='Password'
-                placeholder='********'
-                error={errors.password}
-                register={register({
-                  required: true,
-                  minLength: {
-                    value: 8,
-                    message: 'Please enter a valid password',
-                  }
-                })}
-              />
-            </FormGroupContainer>
+          <FormGroupContainer>
+            <Input
+              type='password'
+              name='password'
+              label='Password'
+              placeholder='********'
+              error={errors.password}
+              register={register({
+                required: true,
+                minLength: {
+                  value: 8,
+                  message: 'Please enter a valid password',
+                }
+              })}
+            />
+          </FormGroupContainer>
 
-            <FormGroupContainer>
-              <Button>
-                {!loading ? 'Log in' : 'Loading...'}
-              </Button>
-            </FormGroupContainer>
+          <FormGroupContainer>
+            <Button>
+              {!loading ? 'Log in' : 'Loading...'}
+            </Button>
+          </FormGroupContainer>
 
-            <FormGroupLink>
-              <Button
-                type='linkText'
-                to='/signup'
-              >
-                I do not have an account
-              </Button>
-            </FormGroupLink>
-          </form>
-        </LoginFormContainer>
-      </LoginContainer>
+          <FormGroupLink>
+            <Button
+              type='linkText'
+              to='/signup'
+            >
+              I do not have an account
+            </Button>
+          </FormGroupLink>
+        </form>
+        </LoginSignupFormContainer>
+      </LoginSignupContainer>
     </Layout>
   )
 }

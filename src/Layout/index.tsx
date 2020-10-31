@@ -1,5 +1,6 @@
 import React, { FC, Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { AuthProvider } from '../hooks/useAuthHook'
 
 import GlobalStyles from '../styles/globalStyles'
 import theme from '../styles/theme'
@@ -13,9 +14,11 @@ const Layout: FC = props => {
     <Fragment>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Navigation />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <Navigation />
+          {children}
+          <Footer />
+        </AuthProvider>
       </ThemeProvider>
     </Fragment>
   )

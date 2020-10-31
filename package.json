@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "constate": "^3.1.0",
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.85",
     "gatsby-background-image": "^1.1.2",
@@ -31,6 +32,7 @@
     "react-hook-form": "^6.9.6",
     "styled-components": "^5.2.0",
     "typeface-lato": "^1.1.13",
+    "use-http": "^1.0.15",
     "use-media": "^1.4.0"
   },
   "devDependencies": {

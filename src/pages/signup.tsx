@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
+import { useFetch } from 'use-http'
 
 import {
-  LoginContainer, LoginFormContainer, FormGroupContainer, FormGroupLink
-} from '../components/LoginAndSignup/LoginAndSignup.styles'
+  LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
+} from '../components/LoginSignup/LoginSignup.styles'
 import Layout from '../Layout'
 import Button from '../components/UI/Button/Button.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import Input from '../components/UI/Input/Input.component'
+// import { useAuthContext } from '../contexts/authContext'
 
 interface SignupInputs {
   name: string
@@ -18,18 +20,23 @@ interface SignupInputs {
 
 const Signup: FC = () => {
   const { register, handleSubmit, errors, getValues, setError } = useForm<SignupInputs>()
-  const [loading, setLoading] = useState(false)
+  const { post, loading } = useFetch(process.env.GATSBY_BACKEND_API_URL)
 
-  const onSubmit = (inputs: SignupInputs) => {
-    setLoading(true)
-    console.log(inputs)
-    setLoading(false)
+  // const { login } = useAuthContext()
+
+  const onSubmit = async (inputs: SignupInputs) => {
+    const data = await post('/users/signup', inputs)
+    if (data.user && data.accessToken) {
+      // login(data.user, data.accessToken)
+    } else {
+      console.log(data.message)
+    }
   }
 
   return (
     <Layout>
-      <LoginContainer>
-        <LoginFormContainer>
+      <LoginSignupContainer>
+        <LoginSignupFormContainer>
           <Heading type='Secondary'>
             Sign into your account
           </Heading>
@@ -122,8 +129,8 @@ const Signup: FC = () => {
             </Button>
             </FormGroupLink>
           </form>
-        </LoginFormContainer>
-      </LoginContainer>
+        </LoginSignupFormContainer>
+      </LoginSignupContainer>
     </Layout>
   )
 }

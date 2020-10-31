@@ -256,12 +256,12 @@ export const NavigationSignupContainer = styled(Link)`
   right: 17rem;
 
   @media only screen and (max-width: 56.25em) {
-    right: 16rem;
+    right: 15.2rem;
   }
 
   @media only screen and (max-width: 24em) {
     right: auto;
-    left: 12rem;
+    left: 11rem;
   }
 `
 

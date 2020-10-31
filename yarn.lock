@@ -4304,6 +4304,11 @@ constants-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
 
+constate@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/constate/-/constate-3.1.0.tgz#6a84da7f8051334a77a6a92860e4058b2eae96c1"
+  integrity sha512-a8hPXRJzcllP5D/9twMRI2VkAiZwgcY/fXyTHQqvv8EBZxzjEh6cAFlsHqnBQ7GtPWlNK11zD4pbIqO1jP0ReA==
+
 contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
@@ -14356,10 +14361,24 @@ urql@^1.9.7:
     "@urql/core" "^1.12.3"
     wonka "^4.0.14"
 
+urs@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/urs/-/urs-0.0.7.tgz#2dbf320a68a54bbd67ab9c5ac103b0f2227ca6be"
+  integrity sha512-NDwuby5BP7D60RjHlow8Gch4yfglLdCpZagGeVDZNcL+jsA2v6RcBhPTJraqq1oQ1U3LT1bQfgmwgNUUIFht+g==
+
 use-callback-ref@^1.2.1, use-callback-ref@^1.2.3:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.4.tgz#d86d1577bfd0b955b6e04aaf5971025f406bea3c"
   integrity sha512-rXpsyvOnqdScyied4Uglsp14qzag1JIemLeTWGKbwpotWht57hbP78aNT+Q4wdFKQfQibbUX4fb6Qb4y11aVOQ==
+
+use-http@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/use-http/-/use-http-1.0.15.tgz#c30c79f41583d9601dc074aee8750317a99231a3"
+  integrity sha512-Gw0QyPELU9Zkr7oQrMDNfseWbBnNnzimG8H4jtLwjI9ZwdiCDOfUO4D4puFG92HIcTIRKnT7P0KsbqO8uMGbrg==
+  dependencies:
+    urs "^0.0.7"
+    use-ssr "^1.0.22"
+    utility-types "^3.10.0"
 
 use-media@^1.4.0:
   version "1.4.0"
@@ -14373,6 +14392,11 @@ use-sidecar@^1.0.1:
   dependencies:
     detect-node-es "^1.0.0"
     tslib "^1.9.3"
+
+use-ssr@^1.0.22:
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/use-ssr/-/use-ssr-1.0.23.tgz#3bde1e10cd01b3b61ab6386d7cddb72e74828bf8"
+  integrity sha512-5bvlssgROgPgIrnILJe2mJch4e2Id0/bVm1SQzqvPvEAXmlsinCCVHWK3a2iHcPat7PkdJHBo0gmSmODIz6tNA==
 
 use@^3.1.0:
   version "3.1.1"
@@ -14426,6 +14450,11 @@ utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=
+
+utility-types@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
+  integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
 utils-merge@1.0.1:
   version "1.0.1"
