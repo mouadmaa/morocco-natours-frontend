@@ -1,19 +1,22 @@
 import React, { FC } from 'react'
 import { WrapRootElementBrowserArgs } from 'gatsby'
 import { ThemeProvider } from 'styled-components'
+import { Provider as HttpProvider } from 'use-http'
 
-import GlobalStyles from '../../styles/globalStyles'
 import theme from '../../styles/theme'
 import { AuthProvider } from '../../hooks/useAuthHook'
 
 const wrapRootElement: FC<WrapRootElementBrowserArgs> = ({ element }) => {
   return (
-    <AuthProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        {element}
-      </ThemeProvider>
-    </AuthProvider>
+    <ThemeProvider theme={theme}>
+      <HttpProvider
+        url={process.env.GATSBY_BACKEND_API_URL}
+      >
+        <AuthProvider>
+          {element}
+        </AuthProvider>
+      </HttpProvider>
+    </ThemeProvider>
   )
 }
 

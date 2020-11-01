@@ -12,7 +12,6 @@ const Navigation = () => {
   const handleChange = () => setChecked(!checked)
 
   const { user } = useAuthContext()
-  console.log('user', user)
 
   const navigation = [
     { id: '01', name: 'Home', href: '/' },

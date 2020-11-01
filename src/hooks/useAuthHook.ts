@@ -6,7 +6,6 @@ import { setAccessToken } from '../utils/accessToken'
 
 const useAuth = () => {
   const [user, setUser] = useState<User>()
-  console.log(user)
 
   const login = useCallback(
     (user: User, accessToken: string) => {

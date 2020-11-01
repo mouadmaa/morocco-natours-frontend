@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 import { useFetch } from 'use-http'
 
@@ -19,7 +20,7 @@ interface SignupInputs {
 
 const SignupSection: FC = () => {
   const { register, handleSubmit, errors, getValues, setError } = useForm<SignupInputs>()
-  const { post, loading } = useFetch(process.env.GATSBY_BACKEND_API_URL)
+  const { post, loading } = useFetch()
 
   const { login } = useAuthContext()
 
@@ -27,8 +28,9 @@ const SignupSection: FC = () => {
     const data = await post('/users/signup', inputs)
     if (data.user && data.accessToken) {
       login(data.user, data.accessToken)
+      navigate('/overview', { replace: true })
     } else {
-      console.log(data.message)
+      toast.error(data.message)
     }
   }
 

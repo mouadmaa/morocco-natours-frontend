@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 import { useFetch } from 'use-http'
 import { useMedia } from 'use-media'
@@ -41,8 +41,9 @@ const HomeLogin: FC<HomeLoginProps> = props => {
     const data = await post('/users/login', inputs)
     if (data.user && data.accessToken) {
       login(data.user, data.accessToken)
+      navigate('/overview', { replace: true })
     } else {
-      console.log(data.message)
+      toast.error(data.message)
     }
   }
 

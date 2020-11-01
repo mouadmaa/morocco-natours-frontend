@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
+import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 import { useFetch } from 'use-http'
+import { toast } from 'react-toastify'
 
 import {
   LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
@@ -17,7 +19,7 @@ interface LoginInputs {
 
 const LoginSection: FC = () => {
   const { register, handleSubmit, errors } = useForm<LoginInputs>()
-  const { post, loading } = useFetch(process.env.GATSBY_BACKEND_API_URL)
+  const { post, loading } = useFetch()
 
   const { login } = useAuthContext()
 
@@ -25,8 +27,9 @@ const LoginSection: FC = () => {
     const data = await post('/users/login', inputs)
     if (data.user && data.accessToken) {
       login(data.user, data.accessToken)
+      navigate('/overview', { replace: true })
     } else {
-      console.log(data.message)
+      toast.error(data.message)
     }
   }
 

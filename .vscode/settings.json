@@ -10,6 +10,7 @@
     "mapboxgl",
     "natour",
     "signup",
-    "svgs"
+    "svgs",
+    "toastify"
   ]
 }
