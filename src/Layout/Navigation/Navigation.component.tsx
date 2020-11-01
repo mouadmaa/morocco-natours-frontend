@@ -1,21 +1,35 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link } from 'gatsby'
 
 import {
   NavigationContainer, NavigationContentContainer, NavigationListContainer,
   NavigationItemContainer, NavigationLoginContainer, NavigationTitleContainer, NavigationSignupContainer
 } from './Navigation.styles'
+import { useAuthContext } from '../../hooks/useAuthHook'
 
 const Navigation = () => {
   const [checked, setChecked] = useState(false)
   const handleChange = () => setChecked(!checked)
 
+  const { user } = useAuthContext()
+  console.log('user', user)
+
   const navigation = [
     { id: '01', name: 'Home', href: '/' },
     { id: '02', name: 'Tours', href: '/overview' },
-    { id: '03', name: 'Login', href: '/login' },
-    { id: '04', name: 'Signup', href: '/signup' },
   ]
+
+  if (user) {
+    navigation.push(
+      { id: '03', name: 'Profile', href: '/profile' },
+      { id: '04', name: 'Logout', href: '/logout' },
+    )
+  } else {
+    navigation.push(
+      { id: '03', name: 'Login', href: '/login' },
+      { id: '04', name: 'Signup', href: '/signup' },
+    )
+  }
 
   return (
     <NavigationContainer>
@@ -25,17 +39,26 @@ const Navigation = () => {
         <h1>Morocco Natours</h1>
       </NavigationTitleContainer>
 
-      <NavigationLoginContainer
-        to='/login'
-      >
-        <h3>Login</h3>
-      </NavigationLoginContainer>
-
-      <NavigationSignupContainer
-        to='/signup'
-      >
-        <h3>Signup</h3>
-      </NavigationSignupContainer>
+      {user ? (
+        <NavigationLoginContainer
+          to='/profile'
+        >
+          <h3>{user.name}</h3>
+        </NavigationLoginContainer>
+      ) : (
+          <Fragment>
+          <NavigationLoginContainer
+            to='/login'
+          >
+            <h3>Login</h3>
+            </NavigationLoginContainer>
+          <NavigationSignupContainer
+            to='/signup'
+          >
+            <h3>Signup</h3>
+          </NavigationSignupContainer>
+          </Fragment>
+        )}
 
       <input
         id='nav-toggle'

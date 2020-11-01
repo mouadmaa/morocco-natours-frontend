@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { useForm } from 'react-hook-form'
+import { useFetch } from 'use-http'
 import { useMedia } from 'use-media'
 
 import {
@@ -10,20 +11,39 @@ import {
 import Button from '../../UI/Button/Button.component'
 import Heading from '../../UI/Heading/Heading.component'
 import Input from '../../UI/Input/Input.component'
+import { useAuthContext } from '../../../hooks/useAuthHook'
+
+interface HomeLoginProps {
+  setHideHomeLogin: (hide: boolean) => void
+}
 
 interface LoginInputs {
   email: string
   password: string
 }
 
-const HomeLogin: FC = () => {
+const HomeLogin: FC<HomeLoginProps> = props => {
+  const { setHideHomeLogin } = props
   const data = useStaticQuery(query)
+
   const { register, handleSubmit, errors } = useForm<LoginInputs>()
+  const { post, loading } = useFetch(process.env.GATSBY_BACKEND_API_URL)
   const bigTabletView = useMedia({ maxWidth: '75em' })
   const smallTabletView = useMedia({ maxWidth: '56.25em' })
 
-  const onSubmit = (inputs: LoginInputs) => {
-    console.log(inputs)
+  const { user, login } = useAuthContext()
+
+  useEffect(() => {
+    setHideHomeLogin(!!user)
+  }, [user])
+
+  const onSubmit = async (inputs: LoginInputs) => {
+    const data = await post('/users/login', inputs)
+    if (data.user && data.accessToken) {
+      login(data.user, data.accessToken)
+    } else {
+      console.log(data.message)
+    }
   }
 
   const HeroImage = [
@@ -81,7 +101,7 @@ const HomeLogin: FC = () => {
               </FormGroupContainer>
 
               <Button type='buttonSmall'>
-                Log In
+                {!loading ? 'Log In' : 'Loading...'}
               </Button>
             </form>
           </BookingFormContainer>

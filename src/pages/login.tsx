@@ -5,9 +5,8 @@ import { useFetch } from 'use-http'
 import {
   LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
 } from '../components/LoginSignup/LoginSignup.styles'
-import Layout from '../Layout'
-import Button from '../components/UI/Button/Button.component'
 import Heading from '../components/UI/Heading/Heading.component'
+import Button from '../components/UI/Button/Button.component'
 import Input from '../components/UI/Input/Input.component'
 import { useAuthContext } from '../hooks/useAuthHook'
 
@@ -16,12 +15,11 @@ interface LoginInputs {
   password: string
 }
 
-const Login: FC = () => {
+const LoginSection: FC = () => {
   const { register, handleSubmit, errors } = useForm<LoginInputs>()
   const { post, loading } = useFetch(process.env.GATSBY_BACKEND_API_URL)
 
-  const { user, login } = useAuthContext()
-  console.log(user)
+  const { login } = useAuthContext()
 
   const onSubmit = async (inputs: LoginInputs) => {
     const data = await post('/users/login', inputs)
@@ -33,9 +31,8 @@ const Login: FC = () => {
   }
 
   return (
-    <Layout>
-      <LoginSignupContainer>
-        <LoginSignupFormContainer>
+    <LoginSignupContainer>
+      <LoginSignupFormContainer>
         <Heading type='Secondary'>
           Log into your account
         </Heading>
@@ -86,13 +83,12 @@ const Login: FC = () => {
               to='/signup'
             >
               I do not have an account
-            </Button>
+          </Button>
           </FormGroupLink>
         </form>
-        </LoginSignupFormContainer>
-      </LoginSignupContainer>
-    </Layout>
+      </LoginSignupFormContainer>
+    </LoginSignupContainer>
   )
 }
 
-export default Login
+export default LoginSection

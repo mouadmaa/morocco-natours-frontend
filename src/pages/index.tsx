@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, Fragment, useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 
-import Layout from '../Layout'
 import HomeHeader from '../components/Home/HomeHeader/HomeHeader.component'
 import HomeAbout from '../components/Home/HomeAbout/HomeAbout.component'
 import HomeFeatures from '../components/Home/HomeFeatures/HomeFeatures.component'
@@ -18,8 +17,10 @@ const Home: FC<HomeProps> = props => {
   const { data } = props
   const tours = data.allTours.nodes
 
+  const [hideHomeLogin, setHideHomeLogin] = useState(false)
+
   return (
-    <Layout>
+    <Fragment>
       <HomeHeader />
       <HomeAbout />
       <HomeFeatures />
@@ -27,8 +28,12 @@ const Home: FC<HomeProps> = props => {
         tours={tours}
       />
       <HomeStories />
-      <HomeLogin />
-    </Layout>
+      {!hideHomeLogin && (
+        <HomeLogin
+          setHideHomeLogin={setHideHomeLogin}
+        />
+      )}
+    </Fragment>
   )
 }
 

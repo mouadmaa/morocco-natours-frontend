@@ -1,8 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, Fragment } from 'react'
 import { graphql, PageProps } from 'gatsby'
 
 import { OverviewContent, OverviewHeading } from '../components/Overview/overview.styles'
-import Layout from '../Layout'
 import TourCard from '../components/Overview/TourCard/TourCard.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import { Tour } from '../models/tourModel'
@@ -16,7 +15,7 @@ const Overview: FC<OverviewProps> = props => {
   const tours = data.allTours.nodes
 
   return (
-    <Layout>
+    <Fragment>
       <OverviewHeading>
         <Heading type='Secondary'>
           All Our Tours
@@ -30,7 +29,7 @@ const Overview: FC<OverviewProps> = props => {
           />
         ))}
       </OverviewContent>
-    </Layout>
+    </Fragment>
   )
 }
 

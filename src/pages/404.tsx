@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import { PageProps } from 'gatsby'
 
-import Layout from '../Layout'
+import Heading from '../components/UI/Heading/Heading.component'
 
 const NotFound: FC<PageProps> = () => {
   return (
-    <Layout>
-      <h3>Not Found 404</h3>
-    </Layout>
+    <Heading type='Secondary'>
+      Not Found 404
+    </Heading>
   )
 }
 

@@ -2,17 +2,16 @@ import { useState, useCallback } from 'react'
 import constate from 'constate'
 
 import { User } from '../models/userModel'
+import { setAccessToken } from '../utils/accessToken'
 
-export let accessToken = ''
-
-export const useAuth = () => {
+const useAuth = () => {
   const [user, setUser] = useState<User>()
+  console.log(user)
 
   const login = useCallback(
-    (user: User, token: string) => {
-      console.log(user, token)
+    (user: User, accessToken: string) => {
       setUser(user)
-      accessToken = token
+      setAccessToken(accessToken)
     },
     [],
   )
@@ -20,7 +19,7 @@ export const useAuth = () => {
   const logout = useCallback(
     () => {
       setUser(undefined)
-      accessToken = ''
+      setAccessToken('')
     },
     []
   )
