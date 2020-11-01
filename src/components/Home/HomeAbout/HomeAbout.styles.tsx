@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 export const AboutContainer = styled.section`
   background-color: ${({ theme }) => theme.color.grayLight1};
-  padding: 15rem 5vw 20rem;
+  padding: 15rem 5vw 25rem;
   margin-top: -10vh;
+
+  @media only screen and (max-width: 52.25em) {
+    padding-bottom: 10rem;
+  }
 
   @media only screen and (max-width: 37.25em) {
     padding: 20rem 5vw 0;

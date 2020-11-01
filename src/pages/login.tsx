@@ -26,7 +26,6 @@ const Login: FC = () => {
   const onSubmit = async (inputs: LoginInputs) => {
     const data = await post('/users/login', inputs)
     if (data.user && data.accessToken) {
-      console.log(data.user, data.accessToken)
       login(data.user, data.accessToken)
     } else {
       console.log(data.message)

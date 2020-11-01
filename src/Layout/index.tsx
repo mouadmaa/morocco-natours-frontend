@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react'
+import React, { FC } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { AuthProvider } from '../hooks/useAuthHook'
 
@@ -11,16 +11,14 @@ const Layout: FC = props => {
   const { children } = props
 
   return (
-    <Fragment>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <AuthProvider>
-          <Navigation />
-          {children}
-          <Footer />
-        </AuthProvider>
-      </ThemeProvider>
-    </Fragment>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <AuthProvider>
+        <Navigation />
+        <main>{children}</main>
+        <Footer />
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 
