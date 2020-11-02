@@ -3,6 +3,7 @@ import { graphql, useStaticQuery, navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 import { useFetch } from 'use-http'
 import { useMedia } from 'use-media'
+import { toast } from 'react-toastify'
 
 import {
   HomeBookingContainer, BookingContainer, BookingContentContainer,
@@ -32,9 +33,10 @@ const HomeLogin: FC<HomeLoginProps> = props => {
   const smallTabletView = useMedia({ maxWidth: '56.25em' })
 
   const { user, login } = useAuthContext()
+  if (user) navigate('/')
 
   useEffect(() => {
-    setHideHomeLogin(!!user)
+    setHideHomeLogin(Boolean(user))
   }, [user])
 
   const onSubmit = async (inputs: LoginInputs) => {

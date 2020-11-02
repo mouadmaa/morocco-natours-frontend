@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 import { useFetch } from 'use-http'
+import { toast } from 'react-toastify'
 
 import {
   LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
@@ -22,7 +23,8 @@ const SignupSection: FC = () => {
   const { register, handleSubmit, errors, getValues, setError } = useForm<SignupInputs>()
   const { post, loading } = useFetch()
 
-  const { login } = useAuthContext()
+  const { user, login } = useAuthContext()
+  if (user) navigate('/')
 
   const onSubmit = async (inputs: SignupInputs) => {
     const data = await post('/users/signup', inputs)

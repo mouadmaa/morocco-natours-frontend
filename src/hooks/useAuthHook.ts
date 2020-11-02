@@ -5,6 +5,11 @@ import { useLocalStorage } from '@rehooks/local-storage'
 
 import { User } from '../models/userModel'
 
+interface RefreshTokenResponse {
+  accessToken?: string
+  user?: User
+}
+
 const useAuth = () => {
   const [user, setUser, deleteUser] = useLocalStorage<User>('user')
   const [, setAccessToken, deleteAccessToken] = useLocalStorage<string>('accessToken')
@@ -30,12 +35,12 @@ const useAuth = () => {
   useEffect(
     () => {
       (async () => {
-        const data = await post('/users/refreshToken')
+        const data = await post('/users/refreshToken') as RefreshTokenResponse
         if (data.user, data.accessToken) {
           login(data.user, data.accessToken)
         }
-        const user = await get('users/me')
-        console.log(user)
+        const user = await get('users/me') as User
+        console.log(user.name)
       })()
     },
     []

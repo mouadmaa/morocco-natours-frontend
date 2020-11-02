@@ -21,7 +21,8 @@ const LoginSection: FC = () => {
   const { register, handleSubmit, errors } = useForm<LoginInputs>()
   const { post, loading } = useFetch()
 
-  const { login } = useAuthContext()
+  const { user, login } = useAuthContext()
+  if (user) navigate('/')
 
   const onSubmit = async (inputs: LoginInputs) => {
     const data = await post('/users/login', inputs)
