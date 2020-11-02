@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
-import { useFetch } from 'use-http'
 import { toast } from 'react-toastify'
 
 import {
@@ -10,30 +9,19 @@ import {
 import Button from '../components/UI/Button/Button.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import Input from '../components/UI/Input/Input.component'
-import { useAuthContext } from '../hooks/useAuthHook'
-
-interface SignupInputs {
-  name: string
-  email: string
-  password: string
-  passwordConfirm: string
-}
+import { useAuthContext, UserSignupInputs } from '../hooks/useAuthHook'
 
 const SignupSection: FC = () => {
-  const { register, handleSubmit, errors, getValues, setError } = useForm<SignupInputs>()
-  const { post, loading } = useFetch()
+  const [loading, setLoading] = useState(false)
+  const { register, handleSubmit, errors, getValues } = useForm<UserSignupInputs>()
 
-  const { user, login } = useAuthContext()
+  const { user, signup } = useAuthContext()
   if (user) navigate('/')
 
-  const onSubmit = async (inputs: SignupInputs) => {
-    const data = await post('/users/signup', inputs)
-    if (data.user && data.accessToken) {
-      login(data.user, data.accessToken)
-      navigate('/overview', { replace: true })
-    } else {
-      toast.error(data.message)
-    }
+  const onSubmit = async (userSignupInputs: UserSignupInputs) => {
+    setLoading(true)
+    await signup(userSignupInputs)
+    setLoading(false)
   }
 
   return (
@@ -107,10 +95,11 @@ const SignupSection: FC = () => {
                   message: 'Please confirm your password.',
                 },
                 validate: value => {
-                  setError('passwordConfirm', {
-                    message: 'Passwords are not the same!',
-                  })
-                  return value === getValues('password')
+                  const isNotSame = value === getValues('password')
+                  if (!isNotSame) toast.warning('Passwords are not the same!',
+                    { hideProgressBar: true, toastId: 'signup-toast' },
+                  )
+                  return isNotSame
                 }
               })}
             />

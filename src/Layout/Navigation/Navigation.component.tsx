@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { FC, Fragment, useState } from 'react'
 import { Link } from 'gatsby'
 
 import {
@@ -7,13 +7,20 @@ import {
 } from './Navigation.styles'
 import { useAuthContext } from '../../hooks/useAuthHook'
 
-const Navigation = () => {
+interface Navigation {
+  id: string
+  name: string
+  href: string
+  onClick?: () => void
+}
+
+const Navigation: FC = () => {
   const [checked, setChecked] = useState(false)
   const handleChange = () => setChecked(!checked)
 
-  const { user } = useAuthContext()
+  const { user, logout } = useAuthContext()
 
-  const navigation = [
+  const navigation: Navigation[] = [
     { id: '01', name: 'Home', href: '/' },
     { id: '02', name: 'Tours', href: '/overview' },
   ]
@@ -21,7 +28,7 @@ const Navigation = () => {
   if (user) {
     navigation.push(
       { id: '03', name: 'Profile', href: '/profile' },
-      { id: '04', name: 'Logout', href: '/logout' },
+      { id: '04', name: 'Logout', href: '/', onClick: logout },
     )
   } else {
     navigation.push(
@@ -78,7 +85,10 @@ const Navigation = () => {
             <NavigationItemContainer
               key={nav.id}
             >
-              <Link to={nav.href}>
+              <Link
+                to={nav.href}
+                onClick={nav.onClick}
+              >
                 <span>{nav.id}</span>
                 {nav.name}
               </Link>

@@ -1,8 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
-import { useFetch } from 'use-http'
-import { toast } from 'react-toastify'
 
 import {
   LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
@@ -10,28 +8,19 @@ import {
 import Heading from '../components/UI/Heading/Heading.component'
 import Button from '../components/UI/Button/Button.component'
 import Input from '../components/UI/Input/Input.component'
-import { useAuthContext } from '../hooks/useAuthHook'
-
-interface LoginInputs {
-  email: string
-  password: string
-}
+import { useAuthContext, UserLoginInputs } from '../hooks/useAuthHook'
 
 const LoginSection: FC = () => {
-  const { register, handleSubmit, errors } = useForm<LoginInputs>()
-  const { post, loading } = useFetch()
+  const [loading, setLoading] = useState(false)
+  const { register, handleSubmit, errors } = useForm<UserLoginInputs>()
 
   const { user, login } = useAuthContext()
   if (user) navigate('/')
 
-  const onSubmit = async (inputs: LoginInputs) => {
-    const data = await post('/users/login', inputs)
-    if (data.user && data.accessToken) {
-      login(data.user, data.accessToken)
-      navigate('/overview', { replace: true })
-    } else {
-      toast.error(data.message)
-    }
+  const onSubmit = async (userLoginInputs: UserLoginInputs) => {
+    setLoading(true)
+    await login(userLoginInputs)
+    setLoading(false)
   }
 
   return (

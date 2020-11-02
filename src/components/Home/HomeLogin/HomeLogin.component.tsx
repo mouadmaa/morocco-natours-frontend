@@ -1,9 +1,7 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { graphql, useStaticQuery, navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
-import { useFetch } from 'use-http'
 import { useMedia } from 'use-media'
-import { toast } from 'react-toastify'
 
 import {
   HomeBookingContainer, BookingContainer, BookingContentContainer,
@@ -12,23 +10,18 @@ import {
 import Button from '../../UI/Button/Button.component'
 import Heading from '../../UI/Heading/Heading.component'
 import Input from '../../UI/Input/Input.component'
-import { useAuthContext } from '../../../hooks/useAuthHook'
+import { useAuthContext, UserLoginInputs } from '../../../hooks/useAuthHook'
 
 interface HomeLoginProps {
   setHideHomeLogin: (hide: boolean) => void
 }
 
-interface LoginInputs {
-  email: string
-  password: string
-}
-
 const HomeLogin: FC<HomeLoginProps> = props => {
   const { setHideHomeLogin } = props
-  const data = useStaticQuery(query)
 
-  const { register, handleSubmit, errors } = useForm<LoginInputs>()
-  const { post, loading } = useFetch(process.env.GATSBY_BACKEND_API_URL)
+  const [loading, setLoading] = useState(false)
+  const data = useStaticQuery(query)
+  const { register, handleSubmit, errors } = useForm<UserLoginInputs>()
   const bigTabletView = useMedia({ maxWidth: '75em' })
   const smallTabletView = useMedia({ maxWidth: '56.25em' })
 
@@ -39,14 +32,10 @@ const HomeLogin: FC<HomeLoginProps> = props => {
     setHideHomeLogin(Boolean(user))
   }, [user])
 
-  const onSubmit = async (inputs: LoginInputs) => {
-    const data = await post('/users/login', inputs)
-    if (data.user && data.accessToken) {
-      login(data.user, data.accessToken)
-      navigate('/overview', { replace: true })
-    } else {
-      toast.error(data.message)
-    }
+  const onSubmit = async (userLoginInputs: UserLoginInputs) => {
+    setLoading(true)
+    await login(userLoginInputs)
+    setLoading(false)
   }
 
   const HeroImage = [
