@@ -51,14 +51,13 @@ export const ReviewsAvatarImage = styled.img`
 
 export const ReviewsUser = styled.h6`
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
 `
 
 export const ReviewsText = styled.p`
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  font-style: italic;
   font-weight: 400;
 `
 

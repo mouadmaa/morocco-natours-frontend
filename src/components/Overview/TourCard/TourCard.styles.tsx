@@ -60,14 +60,13 @@ export const CardDetailsContainer = styled.div`
 export const CardSubHeading = styled.h4`
   font-size: 1.2rem;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
   grid-column: 1 / -1;
 `
 
 export const CardText = styled.p`
   grid-column: 1 / -1;
   font-size: 1.5rem;
-  font-style: italic;
   margin-top: -1rem;
   margin-bottom: 0.75rem;
 `

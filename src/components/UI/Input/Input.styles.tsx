@@ -4,7 +4,7 @@ export const LabelElement = styled.label`
   display: block;
   font-size: 1.6rem;
   margin-left: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 0.75rem;
 
   span {

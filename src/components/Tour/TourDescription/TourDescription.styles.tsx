@@ -63,7 +63,7 @@ export const OverviewBoxDetailsContainer = styled.div`
 `
 
 export const OverviewBoxLabel = styled.span`
-  font-weight: 700;
+  font-weight: 600;
   margin-right: 2.25rem;
   text-transform: uppercase;
   font-size: 1.4rem;

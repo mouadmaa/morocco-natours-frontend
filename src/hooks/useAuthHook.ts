@@ -1,9 +1,9 @@
 import { useCallback, useEffect } from 'react'
 import constate from 'constate'
 import { useFetch } from 'use-http'
-import { useLocalStorage } from '@rehooks/local-storage'
 
 import { User } from '../models/userModel'
+import { useLocalStorage } from './useLocalStorage'
 
 interface RefreshTokenResponse {
   accessToken?: string
@@ -11,10 +11,10 @@ interface RefreshTokenResponse {
 }
 
 const useAuth = () => {
-  const [user, setUser, deleteUser] = useLocalStorage<User>('user')
-  const [, setAccessToken, deleteAccessToken] = useLocalStorage<string>('accessToken')
+  const [user, setUser] = useLocalStorage('user', null)
+  const [, setAccessToken] = useLocalStorage('accessToken', '')
 
-  const { post, get } = useFetch()
+  const { get, post } = useFetch()
 
   const login = useCallback(
     (user: User, accessToken: string) => {
@@ -26,8 +26,8 @@ const useAuth = () => {
 
   const logout = useCallback(
     () => {
-      deleteUser()
-      deleteAccessToken()
+      setUser(null)
+      setAccessToken('')
     },
     []
   )
@@ -39,8 +39,9 @@ const useAuth = () => {
         if (data.user, data.accessToken) {
           login(data.user, data.accessToken)
         }
-        const user = await get('users/me') as User
-        console.log(user.name)
+
+        const me = await get('/users/me') as User
+        console.log(me.name)
       })()
     },
     []
