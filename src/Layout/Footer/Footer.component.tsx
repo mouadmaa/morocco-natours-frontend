@@ -17,7 +17,7 @@ const Footer: FC = () => {
   if (user) {
     navigation.push(
       { id: '03', name: 'Profile', href: '/profile' },
-      { id: '04', name: 'My Booking', href: '/my-booking' },
+      { id: '04', name: 'My Bookings', href: '/my-bookings' },
     )
   } else {
     navigation.push(
