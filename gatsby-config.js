@@ -24,6 +24,6 @@ module.exports = {
         name: `svgs`,
         path: path.join(__dirname, `static`, `svgs`),
       },
-    }
+    },
   ],
 }

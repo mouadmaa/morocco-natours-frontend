@@ -1,8 +1,7 @@
 import { useCallback, useEffect } from 'react'
-import { navigate } from 'gatsby'
-import constate from 'constate'
 import { useFetch } from 'use-http'
 import { toast } from 'react-toastify'
+import constate from 'constate'
 
 import { User } from '../models/userModel'
 import { useLocalStorage } from './useLocalStorage'
@@ -60,27 +59,19 @@ const useAuth = () => {
     () => {
       (async () => {
         if (!user) return
-
         const response = await post('/users/refreshToken') as UserResponse
-        if (response.user && response.accessToken) {
-          setUser(response.user)
-          setAccessToken(response.accessToken)
-        }
-
-        const me = await get('/users/me') as User
-        console.log(me.name)
+        handleResponse(response, false)
       })()
     },
     []
   )
 
   const handleResponse = useCallback(
-    (response: UserResponse) => {
+    (response: UserResponse, showMessage: boolean = true) => {
       if (response.user && response.accessToken) {
         setUser(response.user)
         setAccessToken(response.accessToken)
-        navigate('/overview', { replace: true })
-      } else if (response.message) {
+      } else if (showMessage) {
         toast.error(response.message)
       }
     },
