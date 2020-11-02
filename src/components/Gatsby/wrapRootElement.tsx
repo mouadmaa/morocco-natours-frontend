@@ -11,6 +11,12 @@ const wrapRootElement: FC<WrapRootElementBrowserArgs> = ({ element }) => {
     <ThemeProvider theme={theme}>
       <HttpProvider
         url={process.env.GATSBY_BACKEND_API_URL}
+        options={{
+          credentials: 'include',
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        }}
       >
         <AuthProvider>
           {element}

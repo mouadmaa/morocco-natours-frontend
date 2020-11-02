@@ -4,14 +4,26 @@ import { Link } from 'gatsby'
 import {
   FooterContainer, FooterNavContainer, FooterCopyright
 } from './Footer.styles'
+import { useAuthContext } from '../../hooks/useAuthHook'
 
 const Footer: FC = () => {
+  const { user } = useAuthContext()
+
   const navigation = [
     { id: '01', name: 'Home', href: '/' },
     { id: '02', name: 'Tours', href: '/overview' },
-    { id: '03', name: 'Login', href: '/login' },
-    { id: '04', name: 'Signup', href: '/signup' },
   ]
+
+  if (user) {
+    navigation.push(
+      { id: '03', name: 'Profile', href: '/profile' },
+    )
+  } else {
+    navigation.push(
+      { id: '03', name: 'Login', href: '/login' },
+      { id: '04', name: 'Signup', href: '/signup' },
+    )
+  }
 
   return (
     <FooterContainer>

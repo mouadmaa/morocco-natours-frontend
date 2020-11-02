@@ -9,6 +9,7 @@
     "mapbox",
     "mapboxgl",
     "natour",
+    "rehooks",
     "signup",
     "svgs",
     "toastify"
