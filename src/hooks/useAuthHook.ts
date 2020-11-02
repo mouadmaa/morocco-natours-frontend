@@ -28,7 +28,7 @@ const useAuth = () => {
   const [user, setUser] = useLocalStorage('user', null)
   const [, setAccessToken] = useLocalStorage('accessToken', null)
 
-  const { get, post } = useFetch<UserResponse>()
+  const { get, post, patch, cache } = useFetch<UserResponse>()
 
   const login = useCallback(
     async (userLoginInput: UserLoginInputs) => {
@@ -55,6 +55,21 @@ const useAuth = () => {
     []
   )
 
+  const updateUser = useCallback(
+    async (formData: FormData) => {
+      cache.clear()
+      const response = await patch('/users/me', formData)
+      if (response.name) {
+        setUser(response)
+        toast.success('Your changes have been saved')
+        return true
+      }
+      toast.error(response.message)
+      return false
+    },
+    [],
+  )
+
   useEffect(
     () => {
       (async () => {
@@ -78,7 +93,7 @@ const useAuth = () => {
     [],
   )
 
-  return { user, login, signup, logout }
+  return { user, login, signup, logout, updateUser }
 }
 
 export const [
