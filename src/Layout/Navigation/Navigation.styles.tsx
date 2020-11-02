@@ -193,6 +193,7 @@ const loginAndSignupStyles = css`
   z-index: 2000;
   box-shadow: ${({ theme }) => theme.shadowLight};
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
   background-color: ${({ theme }) => theme.color.tertiaryLight};
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
@@ -206,17 +207,6 @@ const loginAndSignupStyles = css`
   img {
     height: 100%;
     border-radius: 50%;
-  }
-
-  span {
-    display: inline-block;
-    color: ${({ theme }) => theme.color.grayLight2};
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 1.5rem;
-    letter-spacing: .1rem;
-    margin: 0 1.5rem 0 1rem;
-    transform: translateY(-1.6rem);
   }
 
   h3 {
@@ -262,6 +252,18 @@ export const NavigationSignupContainer = styled(Link)`
   @media only screen and (max-width: 24em) {
     right: auto;
     left: 11rem;
+  }
+`
+
+export const NavigationProfileContainer = styled(Link)`
+  ${loginAndSignupStyles}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h3 {
+    padding: 0 1rem 0 0.6rem;
+    transform: translateY(0);
   }
 `
 

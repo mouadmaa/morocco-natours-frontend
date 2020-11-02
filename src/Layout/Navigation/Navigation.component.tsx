@@ -1,9 +1,10 @@
 import React, { FC, Fragment, useState } from 'react'
-import { Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 
 import {
   NavigationContainer, NavigationContentContainer, NavigationListContainer,
-  NavigationItemContainer, NavigationLoginContainer, NavigationTitleContainer, NavigationSignupContainer
+  NavigationItemContainer, NavigationLoginContainer, NavigationTitleContainer,
+  NavigationSignupContainer, NavigationProfileContainer
 } from './Navigation.styles'
 import { useAuthContext } from '../../hooks/useAuthHook'
 
@@ -15,6 +16,8 @@ interface Navigation {
 }
 
 const Navigation: FC = () => {
+  const data = useStaticQuery(query)
+
   const [checked, setChecked] = useState(false)
   const handleChange = () => setChecked(!checked)
 
@@ -28,7 +31,8 @@ const Navigation: FC = () => {
   if (user) {
     navigation.push(
       { id: '03', name: 'Profile', href: '/profile' },
-      { id: '04', name: 'Logout', href: '/', onClick: logout },
+      { id: '04', name: 'My Booking', href: '/my-booking' },
+      { id: '05', name: 'Logout', href: '/', onClick: logout },
     )
   } else {
     navigation.push(
@@ -46,11 +50,16 @@ const Navigation: FC = () => {
       </NavigationTitleContainer>
 
       {user ? (
-        <NavigationLoginContainer
+        <NavigationProfileContainer
           to='/profile'
         >
+          <img
+            src={user.photo ? user.photo
+              : data.userSvg.publicURL}
+            alt='User Photo'
+          />
           <h3>{user.name}</h3>
-        </NavigationLoginContainer>
+        </NavigationProfileContainer>
       ) : (
           <Fragment>
           <NavigationLoginContainer
@@ -101,3 +110,11 @@ const Navigation: FC = () => {
 }
 
 export default Navigation
+
+const query = graphql`
+  {
+    userSvg: file(relativePath: {eq: "user.svg"}) {
+      publicURL
+    }
+  }
+`

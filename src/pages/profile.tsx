@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { navigate } from 'gatsby'
 
 import { ProfileContainer, UserViewContainer } from '../components/Profile/profile.styles'
@@ -8,7 +8,10 @@ import { useAuthContext } from '../hooks/useAuthHook'
 
 const Profile: FC = () => {
   const { user } = useAuthContext()
-  if (!user) navigate('/login')
+
+  useEffect(() => {
+    if (!user) navigate('/login')
+  }, [user])
 
   return (
     <ProfileContainer>
