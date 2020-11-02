@@ -120,11 +120,11 @@ export const ButtonLinkContainer = styled(Link)`
 `
 
 export const ButtonSmallContainer = styled.button`
+  color: ${({ theme }) => theme.color.grayLight1};
   background-color: ${({ theme }) => theme.color.tertiaryLight};
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
   background-position: 100% 0;
   background-size: 200% 200%;
-  color: ${({ theme }) => theme.color.grayLight1};
   font-size: 1.4rem;
   padding: 1rem 3rem;
   border-radius: 10rem;
@@ -139,7 +139,8 @@ export const ButtonSmallContainer = styled.button`
   :hover {
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadowDark};
-    background-position: 0 0;
+    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.primaryLight} 0%, ${({ theme }) => theme.color.tertiaryLight} 100%);
+    background-position: 0 50%;
   }
 
   :active {
@@ -149,7 +150,8 @@ export const ButtonSmallContainer = styled.button`
 
   :focus {
     outline: none;
-    background-color: ${({ theme }) => theme.color.primaryDark};
+    background-image: linear-gradient(315deg, ${({ theme }) => theme.color.primaryLight} 0%, ${({ theme }) => theme.color.tertiaryLight} 100%);
+    background-position: 0 50%;
   }
 `
 
@@ -171,7 +173,7 @@ export const LinkTextContainer = styled(Link)`
   }
 
   :active {
-    transform: translateY(0);
+    transform: translateY(-1px);
     box-shadow: ${({ theme }) => theme.shadowLight};
   }
 

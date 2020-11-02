@@ -70,6 +70,10 @@ export const UserImageUpload = styled.input`
     outline: 3px solid ${({ theme }) => theme.color.primary};
     outline-offset: 3px;
   }
+
+  :active + label {
+    transform: translateY(-1px);
+  }
 `
 
 export const UserImageUploadLabel = styled.label`

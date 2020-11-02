@@ -7,6 +7,7 @@ import {
   FormGroupContainer, FormGroupImageContainer, FormGroupImage,
   FormGroupContainerButton, UserImageUpload, UserImageUploadLabel
 } from './UserSettings.styles'
+import UserPassword from '../UserPassword/UserPassword.component'
 import Heading from '../../UI/Heading/Heading.component'
 import Button from '../../UI/Button/Button.component'
 import Input from '../../UI/Input/Input.component'
@@ -120,7 +121,7 @@ const UserSettings: FC = () => {
         </form>
       </UserSettingsFormContainer>
       <UserSettingsLine>&nbsp;</UserSettingsLine>
-      {/* <UserPassword /> */}
+      <UserPassword />
     </UserSettingsContainer>
   )
 }

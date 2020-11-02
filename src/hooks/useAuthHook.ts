@@ -6,24 +6,6 @@ import constate from 'constate'
 import { User } from '../models/userModel'
 import { useLocalStorage } from './useLocalStorage'
 
-interface UserResponse {
-  accessToken?: string
-  user?: User
-  message?: string
-}
-
-export interface UserLoginInputs {
-  email: string
-  password: string
-}
-
-export interface UserSignupInputs {
-  name: string
-  email: string
-  password: string
-  passwordConfirm: string
-}
-
 const useAuth = () => {
   const [user, setUser] = useLocalStorage('user', null)
   const [, setAccessToken] = useLocalStorage('accessToken', null)
@@ -70,6 +52,29 @@ const useAuth = () => {
     [],
   )
 
+  const updatePassword = useCallback(
+    async (userPasswordInputs: UserPasswordInputs) => {
+      cache.clear()
+      const response = await patch('/users/updateMyPassword', userPasswordInputs) as UserResponse
+      return handleResponse(response)
+    },
+    [],
+  )
+
+  const handleResponse = useCallback(
+    (response: UserResponse, showMessage: boolean = true) => {
+      if (response.user && response.accessToken) {
+        setUser(response.user)
+        setAccessToken(response.accessToken)
+        return true
+      } else if (showMessage) {
+        toast.error(response.message)
+        return false
+      }
+    },
+    [],
+  )
+
   useEffect(
     () => {
       (async () => {
@@ -81,22 +86,35 @@ const useAuth = () => {
     []
   )
 
-  const handleResponse = useCallback(
-    (response: UserResponse, showMessage: boolean = true) => {
-      if (response.user && response.accessToken) {
-        setUser(response.user)
-        setAccessToken(response.accessToken)
-      } else if (showMessage) {
-        toast.error(response.message)
-      }
-    },
-    [],
-  )
-
-  return { user, login, signup, logout, updateUser }
+  return { user, login, signup, logout, updateUser, updatePassword }
 }
 
 export const [
   AuthProvider,
   useAuthContext
 ] = constate(useAuth)
+
+
+interface UserResponse {
+  accessToken?: string
+  user?: User
+  message?: string
+}
+
+export interface UserLoginInputs {
+  email: string
+  password: string
+}
+
+export interface UserSignupInputs {
+  name: string
+  email: string
+  password: string
+  passwordConfirm: string
+}
+
+export interface UserPasswordInputs {
+  passwordCurrent: string
+  passwordNew: string
+  passwordConfirm: string
+}
