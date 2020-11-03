@@ -79,8 +79,13 @@ const useAuth = () => {
     () => {
       (async () => {
         if (!user) return
-        const response = await post('/users/refreshToken') as UserResponse
-        handleResponse(response, false)
+        try {
+          const response = await post('/users/refreshToken') as UserResponse
+          handleResponse(response, false)
+        } catch {
+          setUser(null)
+          setAccessToken(null)
+        }
       })()
     },
     []
