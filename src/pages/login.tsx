@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import {
   LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
 } from '../components/LoginSignup/LoginSignup.styles'
+import SEO from '../components/Gatsby/SEO'
 import Heading from '../components/UI/Heading/Heading.component'
 import Button from '../components/UI/Button/Button.component'
 import Input from '../components/UI/Input/Input.component'
@@ -25,6 +26,7 @@ const LoginSection: FC = () => {
 
   return (
     <LoginSignupContainer>
+      <SEO title='Login' />
       <LoginSignupFormContainer>
         <Heading type='Secondary'>
           Log into your account

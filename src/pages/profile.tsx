@@ -5,6 +5,7 @@ import { ProfileContainer, UserViewContainer } from '../components/Profile/profi
 import ProfileMenu from '../components/Profile/ProfileMenu/ProfileMenu.component'
 import UserSettings from '../components/Profile/UserSettings/UserSettings.component'
 import { useAuthContext } from '../hooks/useAuthHook'
+import SEO from '../components/Gatsby/SEO'
 
 const Profile: FC = () => {
   const { user } = useAuthContext()
@@ -15,6 +16,7 @@ const Profile: FC = () => {
 
   return (
     <ProfileContainer>
+      <SEO title='Profile' />
       <UserViewContainer>
         <ProfileMenu user={user} />
         <UserSettings />

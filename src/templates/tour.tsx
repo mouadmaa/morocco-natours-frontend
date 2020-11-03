@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, Fragment } from 'react'
 import { PageProps } from 'gatsby'
 
-import Layout from '../Layout'
+import SEO from '../components/Gatsby/SEO'
 import TourHeader from '../components/Tour/TourHeader/TourHeader.component'
 import TourDescription from '../components/Tour/TourDescription/TourDescription.component'
 import TourPictures from '../components/Tour/TourPictures/TourPictures.component'
@@ -20,7 +20,8 @@ const Tour: FC<TourProps> = props => {
   const { pageContext: { tour } } = props
 
   return (
-    <Layout>
+    <Fragment>
+      <SEO title={tour.name} />
       <TourHeader
         name={tour.name}
         imageCover={tour.imageCover}
@@ -51,7 +52,7 @@ const Tour: FC<TourProps> = props => {
         images={tour.images}
         duration={tour.duration}
       />
-    </Layout>
+    </Fragment>
   )
 }
 

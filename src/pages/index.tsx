@@ -1,6 +1,7 @@
 import React, { FC, Fragment, useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 
+import SEO from '../components/Gatsby/SEO'
 import HomeHeader from '../components/Home/HomeHeader/HomeHeader.component'
 import HomeAbout from '../components/Home/HomeAbout/HomeAbout.component'
 import HomeFeatures from '../components/Home/HomeFeatures/HomeFeatures.component'
@@ -21,6 +22,7 @@ const Home: FC<HomeProps> = props => {
 
   return (
     <Fragment>
+      <SEO title='Morocco Natours | Exciting Tours For Adventurous People' />
       <HomeHeader />
       <HomeAbout />
       <HomeFeatures />

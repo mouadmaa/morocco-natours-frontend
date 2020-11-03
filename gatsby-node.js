@@ -5,12 +5,10 @@ const axios = require(`axios`).default
 exports.sourceNodes = async ({ actions, createContentDigest }) => {
   const { createNode } = actions
 
-  // fetch raw data from the tours api
   const { data } = await axios.get(
     `${process.env.BACKEND_API_URL}/tours/tours-with-reviews-guides`
   )
 
-  // map into these results and create nodes
   data.map(tour => {
     createNode({
       ...tour,

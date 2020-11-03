@@ -2,6 +2,7 @@ import React, { FC, Fragment } from 'react'
 import { graphql, PageProps } from 'gatsby'
 
 import { OverviewContent, OverviewHeading } from '../components/Overview/overview.styles'
+import SEO from '../components/Gatsby/SEO'
 import TourCard from '../components/Overview/TourCard/TourCard.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import { Tour } from '../models/tourModel'
@@ -16,6 +17,7 @@ const Overview: FC<OverviewProps> = props => {
 
   return (
     <Fragment>
+      <SEO title='All Our Tours' />
       <OverviewHeading>
         <Heading type='Secondary'>
           All Our Tours

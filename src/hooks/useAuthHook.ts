@@ -31,6 +31,7 @@ const useAuth = () => {
   const logout = useCallback(
     async () => {
       await get('/users/logout')
+      cache.clear()
       setUser(null)
       setAccessToken(null)
     },

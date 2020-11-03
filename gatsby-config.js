@@ -1,16 +1,16 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/gatsby-config/
- */
 const path = require(`path`)
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `Morocco Natours`,
+    description: `Morocco Natours`,
+    author: `Mouad Maaroufi`,
+  },
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

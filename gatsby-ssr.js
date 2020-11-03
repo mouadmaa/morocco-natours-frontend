@@ -1,7 +1,7 @@
-import wrapPageElement from './src/components/Gatsby/wrapPageElement'
-import wrapRootElement from './src/components/Gatsby/wrapRootElement'
+import wrapRootElement from './src/components/Gatsby/WrapRootElement'
+import wrapPageElement from './src/components/Gatsby/WrapPageElement'
 
 export {
-  wrapPageElement,
   wrapRootElement,
+  wrapPageElement,
 }

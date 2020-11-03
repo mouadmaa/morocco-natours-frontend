@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const LoginSignupContainer = styled.div`
   background-color: #f7f7f7;
   padding: 0 5vw;
-  height: 90vh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;

@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import {
   LoginSignupContainer, LoginSignupFormContainer, FormGroupContainer, FormGroupLink
 } from '../components/LoginSignup/LoginSignup.styles'
+import SEO from '../components/Gatsby/SEO'
 import Button from '../components/UI/Button/Button.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import Input from '../components/UI/Input/Input.component'
@@ -26,6 +27,7 @@ const SignupSection: FC = () => {
 
   return (
     <LoginSignupContainer>
+      <SEO title='Signup' />
       <LoginSignupFormContainer>
         <Heading type='Secondary'>
           Sign into your account

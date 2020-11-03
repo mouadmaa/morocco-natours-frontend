@@ -4,6 +4,7 @@ import { useFetch } from 'use-http'
 import { toast } from 'react-toastify'
 
 import { OverviewContent, OverviewHeading } from '../components/Overview/overview.styles'
+import SEO from '../components/Gatsby/SEO'
 import TourCard from '../components/Overview/TourCard/TourCard.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import Loader from '../components/UI/Loader/Loader.component'
@@ -36,6 +37,7 @@ const MyBookings: FC<PageProps> = props => {
 
   return (
     <Fragment>
+      <SEO title='My Bookings' />
       <OverviewHeading>
         <Heading type='Secondary'>
           My Bookings
@@ -49,7 +51,7 @@ const MyBookings: FC<PageProps> = props => {
             <Loader />
           </Fragment>
         )}
-        {myTours.length && (
+        {!!myTours.length && (
           myTours.map(tour => (
             <TourCard
               key={tour.id}

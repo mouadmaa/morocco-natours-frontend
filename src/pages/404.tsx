@@ -4,6 +4,7 @@ import { graphql, PageProps } from 'gatsby'
 import {
   NotFoundContainer, NotFoundImage
 } from '../Layout/NotFound/NotFound.styles'
+import SEO from '../components/Gatsby/SEO'
 import Button from '../components/UI/Button/Button.component'
 
 const NotFound: FC<PageProps> = props => {
@@ -11,6 +12,7 @@ const NotFound: FC<PageProps> = props => {
 
   return (
     <NotFoundContainer>
+      <SEO title='Not Found 404' />
       <NotFoundImage
         src={data.notFoundSvg.publicURL}
         alt='not found'
