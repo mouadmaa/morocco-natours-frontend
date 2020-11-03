@@ -63,7 +63,7 @@ export const BookingContentContainer = styled.div`
   grid-auto-flow: column;
   align-items: center;
 
-  > a {
+  > a, > button {
     grid-row: 1 / 3;
     grid-column: 2 / 3;
   }

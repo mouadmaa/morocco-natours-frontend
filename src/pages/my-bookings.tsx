@@ -1,5 +1,5 @@
 import React, { FC, Fragment, useEffect, useState } from 'react'
-import { PageProps } from 'gatsby'
+import { PageProps, navigate } from 'gatsby'
 import { useFetch } from 'use-http'
 import { toast } from 'react-toastify'
 
@@ -8,20 +8,27 @@ import TourCard from '../components/Overview/TourCard/TourCard.component'
 import Heading from '../components/UI/Heading/Heading.component'
 import Loader from '../components/UI/Loader/Loader.component'
 import { Tour } from '../models/tourModel'
+import { useAuthContext } from '../hooks/useAuthHook'
 
-const Overview: FC<PageProps> = props => {
+const MyBookings: FC<PageProps> = props => {
   const { location } = props
 
   const [myTours, setMyTours] = useState<Tour[]>([])
   const { get, loading } = useFetch<Tour[]>()
 
+  const { user } = useAuthContext()
+
+  useEffect(() => {
+    if (!user) navigate('/login', { replace: true })
+  }, [user])
+
   useEffect(() => {
     (async () => {
       if (location.search.includes('alert=booking')) {
         toast.success("Your booking was successful! Please check your email for a confirmation. " +
-          "If your booking doesn't show up here immediately, please come back later.", { delay: 25000 })
+          "If your booking doesn't show up here immediately, please come back later.", { autoClose: 25000, }
+        )
       }
-
       const tours = await get('/bookings/my-bookings')
       setMyTours(tours)
     })()
@@ -42,15 +49,17 @@ const Overview: FC<PageProps> = props => {
             <Loader />
           </Fragment>
         )}
-        {myTours.map(tour => (
-          <TourCard
-            key={tour.id}
-            tour={tour}
-          />
-        ))}
+        {myTours.length && (
+          myTours.map(tour => (
+            <TourCard
+              key={tour.id}
+              tour={tour}
+            />
+          ))
+        )}
       </OverviewContent>
     </Fragment>
   )
 }
 
-export default Overview
+export default MyBookings

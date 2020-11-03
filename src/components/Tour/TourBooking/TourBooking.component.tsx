@@ -1,5 +1,7 @@
-import React, { FC } from 'react'
-// import { loadStripe } from '@stripe/stripe-js'
+import React, { FC, useState } from 'react'
+import { loadStripe } from '@stripe/stripe-js'
+import { useFetch } from 'use-http'
+import { toast } from 'react-toastify'
 
 import {
   SectionBookingContainer, BookingContainer,
@@ -7,6 +9,7 @@ import {
 } from './TourBooking.styles'
 import Button from '../../UI/Button/Button.component'
 import Heading from '../../UI/Heading/Heading.component'
+import { useAuthContext } from '../../../hooks/useAuthHook'
 
 interface TourBookingProps {
   tourId: string
@@ -15,26 +18,30 @@ interface TourBookingProps {
   duration: number
 }
 
-// interface SessionId { session_id: string }
-// const stripePromise = loadStripe(`${process.env.React_APP_STRIPE_PUBLISHABLE_KEY}`)
+interface SessionId { session_id: string }
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
 const TourBooking: FC<TourBookingProps> = props => {
-  const { name, images, duration } = props
+  const { name, tourId, images, duration } = props
+  const [loading, setLoading] = useState(false)
 
-  const user = null
+  const { get } = useFetch<SessionId>()
+  const { user } = useAuthContext()
 
-  // const handleClick = async () => {
-  //   const response = await sendRequest(`/bookings/checkout-session/${tourId}`)
-  //   if (!response) return
+  const handleClick = async () => {
+    setLoading(true)
+    const response = await get(`/bookings/checkout-session/${tourId}`)
+    const { session_id: sessionId } = response
 
-  //   const { session_id: sessionId } = response
-  //   const stripe = await stripePromise
-
-  //   if (stripe && sessionId) {
-  //     const { error: { message } } = await stripe.redirectToCheckout({ sessionId })
-  //     if (message) alert.error(message)
-  //   }
-  // }
+    const stripe = await stripePromise
+    if (stripe && sessionId) {
+      const { error: { message } } = await stripe.redirectToCheckout({ sessionId })
+      if (message) toast.error(message)
+    } else {
+      toast.error('Something went wrong!')
+    }
+    setLoading(false)
+  }
 
   return (
     <SectionBookingContainer>
@@ -57,9 +64,9 @@ const TourBooking: FC<TourBookingProps> = props => {
           </BookingText>
           {user ? (
             <Button
-              onClick={() => { }}
+              onClick={handleClick}
             >
-              {false ? 'Processing...'
+              {loading ? 'Processing...'
                 : 'Book tour now!'}
             </Button>
           ) : (

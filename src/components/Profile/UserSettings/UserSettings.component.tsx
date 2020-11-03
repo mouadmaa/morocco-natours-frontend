@@ -96,7 +96,7 @@ const UserSettings: FC = () => {
 
           <FormGroupImageContainer>
             <FormGroupImage
-              src={photo ? URL.createObjectURL(photo) : user.photo ?
+              src={photo ? URL.createObjectURL(photo) : user?.photo ?
                 user.photo : data.userSvg.publicURL}
               alt='User Photo'
             />

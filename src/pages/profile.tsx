@@ -10,7 +10,7 @@ const Profile: FC = () => {
   const { user } = useAuthContext()
 
   useEffect(() => {
-    if (!user) navigate('/login')
+    if (!user) navigate('/login', { replace: true })
   }, [user])
 
   return (

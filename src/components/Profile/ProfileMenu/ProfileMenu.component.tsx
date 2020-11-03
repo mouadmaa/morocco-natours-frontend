@@ -8,7 +8,7 @@ import {
 import { User } from '../../../models/userModel'
 
 interface ProfileMenuProps {
-  user: User
+  user?: User
 }
 
 const ProfileMenu: FC<ProfileMenuProps> = props => {
@@ -44,7 +44,7 @@ const ProfileMenu: FC<ProfileMenuProps> = props => {
           </UserItem>
         ))}
       </UserList>
-      {user.role === 'admin' && (
+      {user?.role === 'admin' && (
         <AdminContainer>
           <AdminHeading>Admin</AdminHeading>
           <AdminList>
