@@ -1,14 +1,13 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useFetch } from 'use-http'
 import { toast } from 'react-toastify'
 import constate from 'constate'
 
 import { User } from '../models/userModel'
-import { useLocalStorage } from './useLocalStorage'
+import { setAccessToken } from '../utils/useHttpOptions'
 
 const useAuth = () => {
-  const [user, setUser] = useLocalStorage('user', null)
-  const [, setAccessToken] = useLocalStorage('accessToken', null)
+  const [user, setUser] = useState<User>()
 
   const { get, post, patch, cache } = useFetch<UserResponse>()
 
@@ -32,8 +31,9 @@ const useAuth = () => {
     async () => {
       await get('/users/logout')
       cache.clear()
-      setUser(null)
-      setAccessToken(null)
+      setUser(undefined)
+      setAccessToken('')
+      deleteUserFromLocalStorage()
     },
     []
   )
@@ -44,6 +44,7 @@ const useAuth = () => {
       const response = await patch('/users/me', formData)
       if (response.name) {
         setUser(response)
+        setUserOnLocalStorage(response.user)
         toast.success('Your changes have been saved')
         return true
       }
@@ -67,6 +68,7 @@ const useAuth = () => {
       if (response.user && response.accessToken) {
         setUser(response.user)
         setAccessToken(response.accessToken)
+        setUserOnLocalStorage(response.user)
         return true
       } else if (showMessage) {
         toast.error(response.message)
@@ -79,13 +81,17 @@ const useAuth = () => {
   useEffect(
     () => {
       (async () => {
-        if (!user) return
+        const storedUser = getUserFromLocalStorage()
+        if (!storedUser) return
+        setUser(storedUser)
+
         try {
           const response = await post('/users/refreshToken') as UserResponse
           handleResponse(response, false)
         } catch {
-          setUser(null)
-          setAccessToken(null)
+          setUser(undefined)
+          setAccessToken('')
+          deleteUserFromLocalStorage()
         }
       })()
     },
@@ -100,8 +106,27 @@ export const [
   useAuthContext
 ] = constate(useAuth)
 
+const getUserFromLocalStorage = () => {
+  const expiration = localStorage.getItem('expiration')
+  if (!expiration || new Date(expiration) <= new Date()) {
+    deleteUserFromLocalStorage()
+  } else {
+    const user = localStorage.getItem('user')
+    if (user) return JSON.parse(user) as User
+  }
+}
 
-interface UserResponse {
+const setUserOnLocalStorage = (user: User) => {
+  localStorage.setItem('user', JSON.stringify(user))
+  localStorage.setItem('expiration', new Date(new Date().setHours(24 * 7)).toISOString())
+}
+
+const deleteUserFromLocalStorage = () => {
+  localStorage.removeItem('user')
+  localStorage.removeItem('expiration')
+}
+
+export interface UserResponse {
   accessToken?: string
   user?: User
   message?: string

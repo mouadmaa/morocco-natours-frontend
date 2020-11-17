@@ -2,15 +2,18 @@ import axios from 'axios'
 import JwtDecode from 'jwt-decode'
 import { IncomingOptions } from 'use-http'
 
-export const httpOptions: IncomingOptions = {
+let accessToken = ''
+export const setAccessToken = (newAccessToken: string) => accessToken = newAccessToken
+export const getAccessToken = () => accessToken
+
+export const useHttpOptions: IncomingOptions = {
   credentials: 'include',
   headers: {
-    authorization: `Bearer ${typeof window !== 'undefined'
-      ? JSON.parse(localStorage.getItem('accessToken')) : ''}`
+    authorization: `Bearer ${getAccessToken()}`
   },
   interceptors: {
     request: async ({ options }) => {
-      let accessToken = JSON.parse(localStorage.getItem('accessToken'))
+      let accessToken = getAccessToken()
       if (!accessToken) return options
       const { exp } = JwtDecode(accessToken)
       if (Date.now() >= exp * 1000) {
@@ -20,10 +23,13 @@ export const httpOptions: IncomingOptions = {
         )
         if (data.user && data.accessToken) {
           accessToken = data.accessToken
-          localStorage.setItem('accessToken', JSON.stringify(accessToken))
+          setAccessToken(accessToken)
         }
       }
-      options.headers['authorization'] = `Bearer ${accessToken}`
+      options.headers = {
+        ...options.headers,
+        authorization: `Bearer ${accessToken}`
+      }
       return options
     },
   },

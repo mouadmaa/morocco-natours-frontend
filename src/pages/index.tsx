@@ -22,7 +22,7 @@ const Home: FC<HomeProps> = props => {
 
   return (
     <Fragment>
-      <SEO title='Morocco Natours | Exciting Tours For Adventurous People' />
+      <SEO title='Exciting Tours For Adventurous People' />
       <HomeHeader />
       <HomeAbout />
       <HomeFeatures />
