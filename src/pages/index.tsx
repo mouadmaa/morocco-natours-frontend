@@ -4,10 +4,10 @@ import { graphql, PageProps } from 'gatsby'
 import SEO from '../components/Gatsby/SEO'
 import HomeHeader from '../components/Home/HomeHeader/HomeHeader.component'
 import HomeAbout from '../components/Home/HomeAbout/HomeAbout.component'
-import HomeFeatures from '../components/Home/HomeFeatures/HomeFeatures.component'
-import HomeTours from '../components/Home/HomeTours/HomeTours.component'
-import HomeStories from '../components/Home/HomeStories/HomeStories.component'
-import HomeLogin from '../components/Home/HomeLogin/HomeLogin.component'
+// import HomeFeatures from '../components/Home/HomeFeatures/HomeFeatures.component'
+// import HomeTours from '../components/Home/HomeTours/HomeTours.component'
+// import HomeStories from '../components/Home/HomeStories/HomeStories.component'
+// import HomeLogin from '../components/Home/HomeLogin/HomeLogin.component'
 import { Tour } from '../models/tourModel'
 
 interface HomeProps extends PageProps {
@@ -25,7 +25,7 @@ const Home: FC<HomeProps> = props => {
       <SEO title='Exciting Tours For Adventurous People' />
       <HomeHeader />
       <HomeAbout />
-      <HomeFeatures />
+      {/* <HomeFeatures />
       <HomeTours
         tours={tours}
       />
@@ -34,7 +34,7 @@ const Home: FC<HomeProps> = props => {
         <HomeLogin
           setHideHomeLogin={setHideHomeLogin}
         />
-      )}
+      )} */}
     </Fragment>
   )
 }

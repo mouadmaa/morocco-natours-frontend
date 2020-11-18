@@ -14,16 +14,18 @@ const Heading: React.FC<HeadingProps> = props => {
   return (
     <Fragment>
       {type === 'Primary' ? (
-        <HeadingPrimary>{children}</HeadingPrimary>
+        <HeadingPrimary>
+          {children}
+        </HeadingPrimary>
       ) : type === 'Secondary' ? (
-          <Fragment>
-            <HeadingSecondary>
-              {children}
-              <div />
-            </HeadingSecondary>
-          </Fragment>
+        <HeadingSecondary>
+          {children}
+          <div />
+        </HeadingSecondary>
       ) : type === 'Tertiary' && (
-        <HeadingTertiary>{children}</HeadingTertiary>
+        <HeadingTertiary>
+          {children}
+        </HeadingTertiary>
       )}
     </Fragment>
   )

@@ -37,16 +37,15 @@ export const NavigationContainer = styled.div`
     top: 3rem;
     right: 3rem;
     border-radius: 50%;
-    z-index: 7000;
-    box-shadow: ${({ theme }) => theme.shadowLight};
     text-align: center;
     cursor: pointer;
+    box-shadow: ${({ theme }) => theme.shadowLight};
     background-color: ${({ theme }) => theme.color.tertiaryLight};
     background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
-    transition-duration: 0.4s;
+    z-index: 7000;
+    transition: 0.4s;
 
     :hover {
-      transform: scale(1.03);
       box-shadow: ${({ theme }) => theme.shadowDark};
     }
 
@@ -114,8 +113,8 @@ export const NavigationContainer = styled.div`
     right: 3rem;
     background-color: ${({ theme }) => theme.color.tertiaryLight};
     background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 10%, ${({ theme }) => theme.color.primaryLight} 100%);
+    transition: 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     z-index: 5000;
-    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 
     @media only screen and (max-width: 56.25em) {
       top: 2.4rem;
@@ -138,7 +137,7 @@ export const NavigationContentContainer = styled.nav`
   opacity: 0;
   pointer-events: none;
   width: 0;
-  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 `
 
 export const NavigationListContainer = styled.ul`
@@ -160,12 +159,12 @@ export const NavigationItemContainer = styled.li`
       font-size: 3rem;
       font-weight: 400;
       padding: 1rem 2rem;
-      color: ${({ theme }) => theme.color.grayLight1};
       text-decoration: none;
       text-transform: uppercase;
+      color: ${({ theme }) => theme.color.grayLight1};
       background-image: linear-gradient(120deg, transparent 0%, transparent 50%, ${({ theme }) => theme.color.grayLight1} 50%);
       background-size: 220%;
-      transition: all .4s;
+      transition: 0.4s;
     }
 
     :link span, :visited span {
@@ -182,7 +181,6 @@ export const NavigationItemContainer = styled.li`
 `
 
 const loginAndSignupStyles = css`
-  background-color: ${({ theme }) => theme.color.grayLight1};
   height: 3.6rem;
   width: auto;
   min-width: 8rem;
@@ -191,16 +189,15 @@ const loginAndSignupStyles = css`
   right: 8rem;
   border-radius: 2rem;
   z-index: 2000;
-  box-shadow: ${({ theme }) => theme.shadowLight};
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: ${({ theme }) => theme.shadowLight};
   background-color: ${({ theme }) => theme.color.tertiaryLight};
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
-  transition-duration: 0.4s;
+  transition: 0.4s;
 
   :hover {
-    transform: scale(1.03);
     box-shadow: ${({ theme }) => theme.shadowDark};
   }
 
@@ -268,7 +265,6 @@ export const NavigationProfileContainer = styled(Link)`
 `
 
 export const NavigationTitleContainer = styled(Link)`
-  background-color: ${({ theme }) => theme.color.grayLight1};
   height: 3.6rem;
   width: auto;
   position: fixed;
@@ -277,15 +273,14 @@ export const NavigationTitleContainer = styled(Link)`
   line-height: 0.9;
   border-radius: 5rem;
   z-index: 2000;
-  box-shadow: ${({ theme }) => theme.shadowLight};
   text-align: center;
   cursor: pointer;
+  box-shadow: ${({ theme }) => theme.shadowLight};
   background-color: ${({ theme }) => theme.color.tertiaryLight};
   background-image: linear-gradient(315deg, ${({ theme }) => theme.color.tertiaryLight} 0%, ${({ theme }) => theme.color.primaryLight} 70%);
-  transition-duration: 0.4s;
+  transition: 0.4s;
 
   :hover {
-    transform: scale(1.03);
     box-shadow: ${({ theme }) => theme.shadowDark};
   }
 

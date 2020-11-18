@@ -4,7 +4,7 @@ import Image from 'gatsby-image'
 
 import {
   AboutContainer, AboutTitleContainer, AboutContentContainer,
-  AboutTextContainer, AboutImagesContainer
+  AboutTextContainer, AboutImagesContainer, AboutShadow
 } from './HomeAbout.styles'
 import Heading from '../../UI/Heading/Heading.component'
 
@@ -13,6 +13,7 @@ const HomeAbout: FC = () => {
 
   return (
     <AboutContainer>
+      <AboutShadow />
       <AboutTitleContainer>
         <Heading type='Secondary'>
           Exciting tours for adventurous people

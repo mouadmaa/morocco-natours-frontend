@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components'
 
 const headingStyles = css`
-  color: ${({ theme }) => theme.color.grayLight1};
+  color: ${({ theme }) => theme.color.grayLight3};
   text-transform: uppercase;
   backface-visibility: hidden;
 

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const AboutContainer = styled.section`
-  background-color: ${({ theme }) => theme.color.grayLight1};
+  background-color: #151515;
   padding: 15rem 5vw 25rem;
-  margin-top: -10vh;
+  position: relative;
 
   @media only screen and (max-width: 52.25em) {
     padding-bottom: 10rem;
@@ -14,12 +14,32 @@ export const AboutContainer = styled.section`
   }
 `
 
+export const AboutShadow = styled.div`
+  position: absolute;
+  bottom: 100%;
+  height: 300px;
+  width: 100%;
+  left: 0;
+  z-index: 20;
+  background-image: linear-gradient(to top, #151515, transparent);
+`
+
 export const AboutTitleContainer = styled.div`
   text-align: center;
+  opacity: 0;
 
   h2 {
     font-size: 3rem;
     margin: 3rem 4rem 5rem;
+
+    > div {
+      position: absolute;
+      background-color: ${props => props.theme.color.grayLight1};
+      width: 0%;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+    }
 
     @media only screen and (max-width: 75em) {
       margin-bottom: 0;
