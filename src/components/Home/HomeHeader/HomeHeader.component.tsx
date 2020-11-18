@@ -39,7 +39,7 @@ export default HomeHeader
 
 const query = graphql`
   {
-    personImage: file(relativePath: {eq: "person.png"}) {
+    personImage: file(relativePath: {eq: "person-3.png"}) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

@@ -1,17 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const AboutContainer = styled.section`
+export const AboutSectionContainer = styled.section`
   background-color: #151515;
-  padding: 15rem 5vw 25rem;
+  padding: 10rem 5vw;
   position: relative;
-
-  @media only screen and (max-width: 52.25em) {
-    padding-bottom: 10rem;
-  }
-
-  @media only screen and (max-width: 37.25em) {
-    padding: 20rem 5vw 0;
-  }
 `
 
 export const AboutShadow = styled.div`
@@ -24,139 +16,114 @@ export const AboutShadow = styled.div`
   background-image: linear-gradient(to top, #151515, transparent);
 `
 
-export const AboutTitleContainer = styled.div`
-  text-align: center;
-  opacity: 0;
+export const AboutContentContainer = styled.div`
+  margin: 0 auto;
+  max-width: 120rem;
+`
 
-  h2 {
-    font-size: 3rem;
-    margin: 3rem 4rem 5rem;
+interface AboutContentProps {
+  reverse?: boolean
+}
+
+export const AboutContent = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  place-items: center;
+  margin-bottom: 15rem;
+
+  ${({ reverse }: AboutContentProps) => reverse && css`
+    grid-template-columns: 1fr 2fr;
+  `}
+
+  div:nth-of-type(1) {
+    position: relative;
+    max-width: 60rem;
+    color: ${props => props.theme.color.grayLight1};
+
+    ${({ reverse }: AboutContentProps) => reverse && css`
+      order: 1;
+      margin-left: 10rem;
+    `}
 
     > div {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      ${({ reverse }: AboutContentProps) => reverse && css`
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+        margin-left: 0;
+      `}
+
+      div {
+        background-color: ${props => props.theme.color.primaryDark};
+        height: 2px;
+        width: 6rem;
+        letter-spacing: 0.1rem;
+        margin-right: 1.5rem;
+      }
+
+      p {
+        color: ${props => props.theme.color.primaryDark};
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0;
+      }
+    }
+
+    h2 {
+      font-size: 6rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+
+      @media only screen and (max-width: 37.5em) {
+        font-size: 4rem;
+      }
+    }
+
+    > span {
       position: absolute;
-      background-color: ${props => props.theme.color.grayLight1};
-      width: 0%;
-      height: 3px;
-      bottom: 0;
-      left: 0;
+      left: -15%;
+      bottom: 30%;
+      font-weight: 600;
+      font-size: 24rem;
+      opacity: 0.1;
     }
 
-    @media only screen and (max-width: 75em) {
-      margin-bottom: 0;
-    }
-
-    @media only screen and (max-width: 37.25em) {
-      font-size: 2.5rem;
-      margin: 1rem 0;
-    }
-  }
-`
-
-export const AboutContentContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, minmax(40rem, 1fr));
-  place-items: center;
-
-  @media only screen and (max-width: 75em) {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 1fr;
-  }
-`
-
-export const AboutTextContainer = styled.div`
-  padding: 2rem 4rem;
-
-  @media only screen and (max-width: 37.25em) {
-    padding: 2rem 0;
-  }
-
-  @media only screen and (max-width: 21.25em) {
-    padding: 0;
-  }
-
-  h3 {
-    margin: 3rem 1rem .5rem;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: ${({ theme }) => theme.color.grayDark2};
-    text-transform: uppercase;
-
-    @media only screen and (max-width: 37.25em) {
-      margin-top: 2rem;
-      text-align: center;
-    }
-  }
-
-  p {
-    font-size: 1.4rem;
-    font-weight: 400;
-
-    @media only screen and (max-width: 37.25em) {
+    p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      opacity: 0.9;
       margin-bottom: 1rem;
     }
-  }
-`
 
-export const AboutImagesContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
+    /* a {
+      color: ${props => props.theme.color.primaryDark};
+      font-size: 1.2rem;
+      font-weight: 400;
+      text-transform: lowercase;
+      display: inline-block;
+      text-decoration: none;
+    } */
 
-  > div {
-    width: 50%;
-    position: absolute !important;
-    box-shadow: ${({ theme }) => theme.shadowLight};
-    border-radius: 0.4rem;
-    outline-offset: 1.4rem;
-    transition: 0.4s;
-
-    :nth-child(1) {
-      left: 4%;
-      top: 5%;
-
-      @media screen and (max-width: 75em) {
-        left: 0;
-        top: 15%;
-      }
-    }
-
-    :nth-child(2) {
-      right: 0;
-      top: 16%;
-
-      @media screen and (max-width: 75em) {
-        right: 0;
-        top: 15%;
-      }
-    }
-
-    :nth-child(3) {
-      left: 20%;
-      top: 36%;
-
-      @media screen and (max-width: 75em) {
-        left: 30%;
-        top: 10%;
-      }
-    }
-
-    :hover {
-      outline: 1.2rem solid ${({ theme }) => theme.color.primary};
-      transform: scale(1.05) translateY(-0.5rem);
-      box-shadow: ${({ theme }) => theme.shadowDark};
-      z-index: 1;
-    }
-
-    @media screen and (max-width: 75em) {
-      width: 36%;
+    @media only screen and (max-width: 56.25em) {
+      order: 0;
+      margin-left: 0;
     }
   }
 
-  :hover div:not(:hover) {
-    transform: scale(0.95);
+  div:nth-of-type(2) {
+    width: 100%;
+    max-width: 60rem;
   }
 
-  @media only screen and (max-width: 75em) {
-    min-height: 30rem;
+  @media only screen and (max-width: 56.25em) {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+    margin-top: 5rem;
   }
 `

@@ -103,6 +103,8 @@ export const HeaderTextContainer = styled.div`
 
   a {
     opacity: 0.9;
-    color:  rgba(0, 0, 0, 0.5);
+    color:  rgba(0, 0, 0, 0.6);
+    padding: 0.8rem 2.5rem;
+    font-size: 1.4rem;
   }
 `

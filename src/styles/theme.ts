@@ -1,5 +1,5 @@
 const theme = {
-  fontFamily: "'Lato', 'Segoe UI', Arial, Tahoma, Geneva, Verdana, sans-serif",
+  fontFamily: "'Lato', sans-serif",
   color: {
     primary: '#55c57a',
     primaryLight: '#33e493',
