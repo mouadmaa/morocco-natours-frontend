@@ -9,11 +9,12 @@ import Button from '../../UI/Button/Button.component'
 
 const HomeHeader: FC = () => {
 	const data = useStaticQuery(query)
+
 	const headerRef = useRef<HTMLHeadElement>(null)
 	const [ elementTop, setElementTop ] = useState(0)
 
 	const { scrollY, scrollYProgress } = useViewportScroll()
-	const scale = useTransform(scrollYProgress, [ 0, 1 ], [ 1, -3 ])
+	const opacity = useTransform(scrollYProgress, [ 0, 1 ], [ 1, -3 ])
 	const y = useTransform(scrollY, [ elementTop, elementTop - 6 ], [ 1, -1 ], { clamp: false })
 
 	useLayoutEffect(
@@ -33,7 +34,7 @@ const HomeHeader: FC = () => {
 
 	return (
 		<HeaderContainer ref={headerRef}>
-			<HeaderTextContainer style={{ opacity: scale, y }}>
+			<HeaderTextContainer style={{ opacity, y }}>
 				<Heading>
 					<div>Outdoors</div>
 					<div>is where life happens</div>
