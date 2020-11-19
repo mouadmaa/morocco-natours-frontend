@@ -25,7 +25,7 @@ const HomeHeader: FC = () => {
 	)
 
 	const images = [
-		{ numberTop: 18, fluid: data.person.childImageSharp.fluid, alt: 'person' },
+		{ numberTop: 15, fluid: data.person.childImageSharp.fluid, alt: 'person' },
 		{ numberTop: 20, fluid: data.mountain1.childImageSharp.fluid, alt: 'mountain 1' },
 		{ numberTop: -5, fluid: data.mountain2.childImageSharp.fluid, alt: 'mountain 2' },
 		{ numberTop: -6, fluid: data.mountain3.childImageSharp.fluid, alt: 'mountain 3' },
