@@ -8,21 +8,24 @@ import { useAuthContext } from '../hooks/useAuthHook'
 import SEO from '../components/Gatsby/SEO'
 
 const Profile: FC = () => {
-  const { user } = useAuthContext()
+	const { user } = useAuthContext()
 
-  useEffect(() => {
-    if (!user) navigate('/login', { replace: true })
-  }, [user])
+	useEffect(
+		() => {
+			if (!user) navigate('/', { replace: true })
+		},
+		[ user ],
+	)
 
-  return (
-    <ProfileContainer>
-      <SEO title='Profile' />
-      <UserViewContainer>
-        <ProfileMenu user={user} />
-        <UserSettings />
-      </UserViewContainer>
-    </ProfileContainer>
-  )
+	return (
+		<ProfileContainer>
+			<SEO title='Profile' />
+			<UserViewContainer>
+				<ProfileMenu user={user} />
+				<UserSettings />
+			</UserViewContainer>
+		</ProfileContainer>
+	)
 }
 
 export default Profile
