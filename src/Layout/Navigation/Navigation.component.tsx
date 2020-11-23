@@ -26,7 +26,7 @@ interface Navigation {
 const Navigation: FC = () => {
 	const data = useStaticQuery(query)
 
-	const [ showLogin, setShowLogin ] = useState(true)
+	const [ showLogin, setShowLogin ] = useState(false)
 	const [ showSignup, setShowSignup ] = useState(false)
 
 	const [ checked, setChecked ] = useState(false)
