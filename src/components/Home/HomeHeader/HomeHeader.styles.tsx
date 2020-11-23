@@ -15,6 +15,7 @@ export const HeaderContainer = styled.header`
 		left: 0;
 		top: 0;
 		background-image: linear-gradient(315deg, transparent, rgba(0, 0, 0, 0.1));
+		backdrop-filter: blur(0.1rem);
 		z-index: 25;
 	}
 

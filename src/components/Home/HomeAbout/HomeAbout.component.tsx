@@ -73,7 +73,7 @@ const AboutContent: FC<AboutContentProps> = (props) => {
 	const [ elementTop, setElementTop ] = useState(0)
 
 	const { scrollY, scrollYProgress } = useViewportScroll()
-	const opacity = useTransform(scrollYProgress, [ 0, 1 ], [ 0, 5 ])
+	const opacity = useTransform(scrollYProgress, [ 0, 1 ], [ 0, 7 ])
 	const y = useTransform(scrollY, [ elementTop, elementTop + 12 ], [ 1, -1 ], { clamp: false })
 
 	useLayoutEffect(

@@ -53,22 +53,21 @@ const Navigation: FC = () => {
 		navigation.push(
 			{ id: '03', name: 'Profile', href: '/profile' },
 			{ id: '04', name: 'My Bookings', href: '/my-bookings' },
-			{ id: '05', name: 'Logout', href: '/', onClick: logout },
+			{
+				id: '05',
+				name: 'Logout',
+				href: '/',
+				onClick: () => {
+					setShowLogin(false)
+					setShowSignup(false)
+					logout()
+				},
+			},
 		)
 	} else {
 		navigation.push(
-			{
-				id: '03',
-				name: 'Login',
-				href: pathname,
-				onClick: login,
-			},
-			{
-				id: '04',
-				name: 'Signup',
-				href: pathname,
-				onClick: signup,
-			},
+			{ id: '03', name: 'Login', href: pathname, onClick: login },
+			{ id: '04', name: 'Signup', href: pathname, onClick: signup },
 		)
 	}
 
@@ -89,11 +88,11 @@ const Navigation: FC = () => {
 					</NavigationProfileContainer>
 				) : (
 					<Fragment>
-						<NavigationLoginContainer to={pathname}>
-							<span onClick={login}>Login</span>
+						<NavigationLoginContainer onClick={login} to={pathname}>
+							<span>Login</span>
 						</NavigationLoginContainer>
-						<NavigationSignupContainer to={pathname}>
-							<span onClick={signup}>Signup</span>
+						<NavigationSignupContainer onClick={signup} to={pathname}>
+							<span>Signup</span>
 						</NavigationSignupContainer>
 					</Fragment>
 				)}

@@ -86,6 +86,10 @@ export const AboutContentContainer = styled.div`
 			opacity: 0.1;
 
 			${({ reverse }: AboutContentContainerProps) => reverse && css`left: 50%;`};
+
+			@media only screen and (max-width: 37.25em) {
+				top: 0;
+			}
 		}
 
 		p {

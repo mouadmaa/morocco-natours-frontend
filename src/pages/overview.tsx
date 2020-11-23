@@ -17,7 +17,9 @@ const Overview: FC<OverviewProps> = (props) => {
 	return (
 		<Fragment>
 			<SEO title='All Our Tours' />
-			<OverviewContent>{tours.map((tour) => <TourCard key={tour.id} tour={tour} />)}</OverviewContent>
+			<OverviewContent>
+				{tours.map((tour, index) => <TourCard key={tour.id} index={index} tour={tour} />)}
+			</OverviewContent>
 		</Fragment>
 	)
 }
