@@ -36,12 +36,7 @@ export const AboutContentContainer = styled.div`
 		max-width: 60rem;
 		color: ${(props) => props.theme.color.grayLight1};
 
-		${({ reverse }: AboutContentContainerProps) =>
-			reverse &&
-			css`
-				order: 1;
-				margin-left: 10rem;
-			`} > div {
+		${({ reverse }: AboutContentContainerProps) => reverse && css`order: 1;`} > div {
 			height: 100%;
 			display: flex;
 			align-items: center;
@@ -89,6 +84,8 @@ export const AboutContentContainer = styled.div`
 			font-weight: 600;
 			font-size: 24rem;
 			opacity: 0.1;
+
+			${({ reverse }: AboutContentContainerProps) => reverse && css`left: 50%;`};
 		}
 
 		p {
