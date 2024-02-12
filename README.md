@@ -4,4 +4,4 @@ This platform for tourists to explore and book a wide variety of tours. The appl
 
 Technologies: Gatsby.js, Stripe
 
-[Backend](https://github.com/mouadmaa/morocco-natours-backend
+[Backend](https://github.com/mouadmaa/morocco-natours-backend)
